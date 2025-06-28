@@ -2,8 +2,8 @@ package ws.spring.text.annotation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+import ws.spring.context.annotation.ExactConfiguration;
 import ws.spring.text.support.EscapePostProcessor;
 
 /**
@@ -11,7 +11,7 @@ import ws.spring.text.support.EscapePostProcessor;
  * @version 2023-06-07.
  */
 
-@Configuration(proxyBeanMethods = false)
+@ExactConfiguration
 class EscapeConfiguration {
 
     @Bean
