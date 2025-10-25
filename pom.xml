@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>ws.spring</groupId>
     <artifactId>ws-springx</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.1.0-RELEASE</version>
     <packaging>pom</packaging>
     <name>ws-springx</name>
     <description>基于spring开发的通用组件</description>
@@ -18,6 +18,14 @@
             <url>https://blog.windshadow.cn</url>
         </developer>
     </developers>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>WindShadow</name>
+            <url>https://maven.pkg.github.com/WindShadow-mo/ws-springx</url>
+        </repository>
+    </distributionManagement>
 
     <modules>
         <module>ws-springx-parent</module>
