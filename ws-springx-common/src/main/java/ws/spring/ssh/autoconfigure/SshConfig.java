@@ -13,7 +13,7 @@ import java.util.Map;
 
 /**
  * @author WindShadow
- * @version 2025-07-06.
+ * @version 2025-07-06
  */
 class SshConfig {
 

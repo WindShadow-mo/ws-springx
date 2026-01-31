@@ -5,7 +5,7 @@
 
 package ws.spring.web.bind;
 
-import org.springframework.boot.web.client.RestTemplateBuilder;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.core.MethodParameter;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpEntity;
@@ -15,6 +15,7 @@ import org.springframework.util.Assert;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.support.WebDataBinderFactory;
+import org.springframework.web.client.RestClient;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
@@ -22,10 +23,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
-import ws.spring.web.http.RestProxy;
 import ws.spring.web.http.DefaultRestProxy;
+import ws.spring.web.http.RestProxy;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -33,14 +33,14 @@ import java.util.Set;
 
 /**
  * @author WindShadow
- * @version 2025-07-15.
+ * @version 2025-07-15
  */
 public class RestProxyResolver implements HandlerMethodArgumentResolver {
 
-    private final RestTemplateBuilder restBuilder;
+    private final RestClient rest;
 
-    public RestProxyResolver(RestTemplateBuilder restBuilder) {
-        this.restBuilder = Objects.requireNonNull(restBuilder);
+    public RestProxyResolver(RestClient rest) {
+        this.rest = Objects.requireNonNull(rest);
     }
 
     @Override
@@ -58,7 +58,7 @@ public class RestProxyResolver implements HandlerMethodArgumentResolver {
         MultipartHttpServletRequest multipartRequest = webRequest.getNativeRequest(MultipartHttpServletRequest.class);
 
         ServletServerHttpRequest httpRequest = new ServletServerHttpRequest(request);
-        UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromHttpRequest(httpRequest);
+        UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromUri(httpRequest.getURI());
         UriComponents components = uriBuilder.build();
 
         RestProxy.RequestBodyFetcher<?> bodyFetcher;
@@ -98,6 +98,6 @@ public class RestProxyResolver implements HandlerMethodArgumentResolver {
                 return form;
             };
         }
-        return new DefaultRestProxy(httpRequest.getMethod(), httpRequest.getHeaders(), uriBuilder, bodyFetcher, restBuilder.build());
+        return new DefaultRestProxy(httpRequest.getMethod(), httpRequest.getHeaders(), uriBuilder, bodyFetcher, rest);
     }
 }

@@ -5,13 +5,13 @@
 
 package ws.spring.util.concurrent;
 
-import org.springframework.lang.Nullable;
+import org.jspecify.annotations.Nullable;
 
 /**
  * 临时独占锁
  *
  * @author WindShadow
- * @version 2025-06-02.
+ * @version 2025-06-02
  */
 public interface TemporaryLock<E> {
 

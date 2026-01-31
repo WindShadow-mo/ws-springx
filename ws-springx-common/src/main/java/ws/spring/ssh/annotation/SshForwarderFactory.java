@@ -19,7 +19,7 @@ import java.util.Optional;
 
 /**
  * @author WindShadow
- * @version 2025-07-06.
+ * @version 2025-07-06
  */
 class SshForwarderFactory implements FactoryBean<SshForwarderBean>, EmbeddedValueResolverAware {
 

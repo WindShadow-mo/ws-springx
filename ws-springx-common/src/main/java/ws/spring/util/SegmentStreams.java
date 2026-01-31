@@ -12,7 +12,7 @@ import java.util.function.Function;
 
 /**
  * @author WindShadow
- * @version 2025-05-28.
+ * @version 2025-05-28
  */
 public final class SegmentStreams {
 
@@ -81,11 +81,9 @@ public final class SegmentStreams {
     private static class SegmentStreamImpl<S, E> extends AbstractSegmentStream<E> {
 
         private static final Queue<?> EMPTY_SEGMENT = new LinkedList<>();
-
-        private int offset;
         private final Function<? super S, ? extends E> mapping;
         private final SegmentVernier<S> vernier;
-
+        private int offset;
         private Queue<S> segment;
 
         private boolean closed;

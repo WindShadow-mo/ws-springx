@@ -7,7 +7,7 @@ package ws.spring.restrict;
 
 /**
  * @author WindShadow
- * @version 2023-12-03.
+ * @version 2023-12-03
  */
 
 public class FrequencyRestrictorDefinition {

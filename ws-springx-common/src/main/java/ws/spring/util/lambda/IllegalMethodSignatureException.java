@@ -9,7 +9,7 @@ package ws.spring.util.lambda;
  * 表示错误的lambda 实现方法的方法签名
  *
  * @author WindShadow
- * @version 2024-10-12.
+ * @version 2024-10-12
  */
 public class IllegalMethodSignatureException extends RuntimeException {
 

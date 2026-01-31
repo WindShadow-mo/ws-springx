@@ -5,10 +5,10 @@
 
 package ws.spring.testdemo.web.controller;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import tools.jackson.core.type.TypeReference;
 import ws.spring.testdemo.SpringxAppTests;
 import ws.spring.testdemo.pojo.City;
 import ws.spring.testdemo.util.JacksonUtils;
@@ -22,7 +22,7 @@ import java.util.function.Supplier;
 
 /**
  * @author WindShadow
- * @version 2025-06-01.
+ * @version 2025-06-01
  * @see SingleEntity
  */
 @Slf4j

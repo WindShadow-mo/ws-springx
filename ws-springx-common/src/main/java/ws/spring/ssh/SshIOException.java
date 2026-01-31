@@ -7,7 +7,7 @@ package ws.spring.ssh;
 
 /**
  * @author WindShadow
- * @version 2024-03-01.
+ * @version 2024-03-01
  */
 public class SshIOException extends SshException {
 

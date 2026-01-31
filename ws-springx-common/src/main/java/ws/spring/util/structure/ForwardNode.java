@@ -5,11 +5,11 @@
 
 package ws.spring.util.structure;
 
-import org.springframework.lang.Nullable;
+import org.jspecify.annotations.Nullable;
 
 /**
  * @author WindShadow
- * @version 2023-06-19.
+ * @version 2023-06-19
  */
 
 public interface ForwardNode<K> {

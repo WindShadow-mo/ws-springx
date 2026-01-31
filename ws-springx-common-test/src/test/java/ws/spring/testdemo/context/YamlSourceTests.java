@@ -15,7 +15,7 @@ import ws.spring.testdemo.SpringxAppTests;
 
 /**
  * @author WindShadow
- * @version 2024-10-24.
+ * @version 2024-10-24
  */
 public class YamlSourceTests extends SpringxAppTests {
 
@@ -29,5 +29,6 @@ public class YamlSourceTests extends SpringxAppTests {
 
     @YamlSource("classpath:custom-config.yml")
     @TestConfiguration
-    static class BaseConfig {}
+    static class BaseConfig {
+    }
 }

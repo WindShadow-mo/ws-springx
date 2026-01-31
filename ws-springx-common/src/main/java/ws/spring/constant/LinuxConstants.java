@@ -5,7 +5,7 @@
 
 package ws.spring.constant;
 
-import org.springframework.lang.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 
@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
 
 /**
  * @author WindShadow
- * @version 2022-09-28.
+ * @version 2022-09-28
  */
 
 public interface LinuxConstants {
@@ -72,7 +72,7 @@ public interface LinuxConstants {
     static Set<PosixFilePermission> transformPermissions(final int fullMode) {
 
         Assert.isTrue(isValidFullMode(fullMode), "Incorrect permission full mode value: [" + fullMode + "]");
-        return transformPermissions(String.format("%03d",fullMode));
+        return transformPermissions(String.format("%03d", fullMode));
     }
 
     /**
@@ -186,8 +186,8 @@ public interface LinuxConstants {
          * 根据权限字符消费其表示的权限，'-'代表无权限
          *
          * @param singleMode 权限字符，如：r、w、x、-
-         * @param predicate 消费条件，PosixFilePermission为null代表无权限
-         * @param consumer 消费者
+         * @param predicate  消费条件，PosixFilePermission为null代表无权限
+         * @param consumer   消费者
          */
         public final void acceptPermission(final char singleMode, Predicate<PosixFilePermission> predicate, Consumer<PosixFilePermission> consumer) {
 
@@ -201,7 +201,7 @@ public interface LinuxConstants {
          * 根据权限字符消费其表示的权限，'-'代表无权限
          *
          * @param singleMode 权限字符，如：r、w、x、-
-         * @param consumer 消费者，消费的权限枚举不为null
+         * @param consumer   消费者，消费的权限枚举不为null
          */
         public final void acceptPermission(final char singleMode, Consumer<PosixFilePermission> consumer) {
 

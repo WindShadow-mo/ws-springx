@@ -11,7 +11,7 @@ import lombok.ToString;
 
 /**
  * @author WindShadow
- * @version 2024-10-15.
+ * @version 2024-10-15
  */
 @NoArgsConstructor
 @Data

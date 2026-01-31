@@ -3,13 +3,13 @@
 <!-- scan:当此属性设置为true时，配置文档如果发生改变，将会被重新加载，默认值为true -->
 <!-- scanPeriod:设置监测配置文档是否有修改的时间间隔，如果没有给出时间单位，默认单位是毫秒。当scan为true时，此属性生效。默认的时间间隔为1分钟。 -->
 <!-- debug:当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false。 -->
-<configuration  scan="true" scanPeriod="10 seconds" debug="false">
+<configuration scan="true" scanPeriod="10 seconds" debug="false">
 
     <contextName>logback</contextName>
     <springProperty scope="context" name="APP_NAME" source="spring.application.name"/>
     <!--  日志文件路径  -->
-    <property name="LOG_HOME" value="/opt/springboot-application/logs/${APP_NAME}" />
-    <property name="LOG_CHARSET" value="UTF-8" />
+    <property name="LOG_HOME" value="/opt/springboot-application/logs/${APP_NAME}"/>
+    <property name="LOG_CHARSET" value="UTF-8"/>
     <property name="FILE_LOG_MAX_HISTORY" value="15"/>
     <property name="FILE_LOG_MAX_SIZE" value="50MB"/>
     <property name="FILE_LOG_TOTAL_MAX_SIZE" value="500MB"/>
@@ -17,16 +17,18 @@
 
 
     <!-- 默认控制台日志格式，此value值写法支持彩色，为springboot默认格式 -->
-    <property name="CONSOLE_LOG_DEFAULT_PATTERN" value="%clr(%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd HH:mm:ss.SSS}}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
+    <property name="CONSOLE_LOG_DEFAULT_PATTERN"
+              value="%clr(%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd HH:mm:ss.SSS}}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
     <!-- 控制台日志格式 -->
     <property name="CONSOLE_LOG_PATTERN" value="${CONSOLE_LOG_PATTERN:-${CONSOLE_LOG_DEFAULT_PATTERN}}"/>
     <!-- 文件日志格式，此处为控制台日志格式无彩色版 -->
-    <property name="FILE_LOG_PATTERN" value="%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd HH:mm:ss.SSS}} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } --- [%15.15t] %-40.40logger{39} : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
+    <property name="FILE_LOG_PATTERN"
+              value="%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd HH:mm:ss.SSS}} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } --- [%15.15t] %-40.40logger{39} : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
 
     <!-- 彩色日志依赖的渲染类 -->
-    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter" />
-    <conversionRule conversionWord="wex" converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter" />
-    <conversionRule conversionWord="wEx" converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter" />
+    <conversionRule conversionWord="clr" class="org.springframework.boot.logging.logback.ColorConverter"/>
+    <conversionRule conversionWord="wex" class="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter"/>
+    <conversionRule conversionWord="wEx" class="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter"/>
 
     <!-- 输出到控制台的 appender -->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
@@ -110,7 +112,7 @@
     <!-- 线上环境输出到文件 -->
     <springProfile name="test,sit,uat,pro">
         <root level="INFO">
-<!--            <appender-ref ref="ROOT"/>-->
+            <!--            <appender-ref ref="ROOT"/>-->
             <appender-ref ref="ROOT_WS"/>
         </root>
     </springProfile>

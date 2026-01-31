@@ -5,9 +5,9 @@
 
 package ws.spring.aop.support;
 
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.lang.NonNull;
-import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
 import org.springframework.util.ClassUtils;
 import ws.spring.aop.MethodPeeper;
@@ -19,7 +19,7 @@ import java.lang.reflect.Method;
 
 /**
  * @author WindShadow
- * @version 2022-01-22.
+ * @version 2022-01-22
  */
 
 public abstract class AbstractMethodPeeper<T> implements MethodPeeper<T>, InitializingBean {

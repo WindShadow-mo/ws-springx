@@ -8,7 +8,7 @@ package ws.spring.log;
 import ch.qos.logback.core.rolling.RolloverFailure;
 import ch.qos.logback.core.rolling.helper.CompressionMode;
 import ch.qos.logback.core.rolling.helper.Compressor;
-import org.springframework.lang.NonNull;
+import org.jspecify.annotations.NonNull;
 
 import java.util.Objects;
 import java.util.concurrent.ExecutorService;
@@ -16,7 +16,7 @@ import java.util.concurrent.Future;
 
 /**
  * @author WindShadow
- * @version 2022-11-06.
+ * @version 2022-11-06
  */
 
 public class AgileCompressor extends Compressor {

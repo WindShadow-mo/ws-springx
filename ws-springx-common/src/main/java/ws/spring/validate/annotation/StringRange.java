@@ -5,10 +5,10 @@
 
 package ws.spring.validate.annotation;
 
+import jakarta.validation.Constraint;
+import jakarta.validation.Payload;
 import ws.spring.validate.StringRangeConstraintValidator;
 
-import javax.validation.Constraint;
-import javax.validation.Payload;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -30,7 +30,7 @@ import static java.lang.annotation.ElementType.*;
  * 当参数<code>str</code>不为"aaa","bbb"之一时，则校验不通过，反之通过
  *
  * @author WindShadow
- * @version 2021-12-16.
+ * @version 2021-12-16
  */
 
 @Documented

@@ -15,7 +15,7 @@ import ws.spring.testdemo.anno.EnableEmbeddedRedis;
 
 /**
  * @author WindShadow
- * @version 2024-10-17.
+ * @version 2024-10-17
  */
 @ActiveProfiles("redis")
 @EnableEmbeddedRedis

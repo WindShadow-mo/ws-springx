@@ -17,7 +17,7 @@ import java.lang.annotation.*;
  * 可以使用此注解声明配置类而不必担心它们被默认的组件扫描策略给引入。
  *
  * @author WindShadow
- * @version 2025-06-23.
+ * @version 2025-06-23
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)

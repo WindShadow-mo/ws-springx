@@ -14,7 +14,7 @@ import java.util.Set;
 
 /**
  * @author WindShadow
- * @version 2022-09-28.
+ * @version 2022-09-28
  */
 
 public class AccessControlRollingFileAppender<E> extends RollingFileAppender<E> {

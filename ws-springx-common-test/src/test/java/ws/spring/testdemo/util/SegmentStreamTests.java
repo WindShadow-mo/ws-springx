@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 
 /**
  * @author WindShadow
- * @version 2025-05-29.
+ * @version 2025-05-29
  * @see SegmentStream
  * @see SegmentStreams
  */

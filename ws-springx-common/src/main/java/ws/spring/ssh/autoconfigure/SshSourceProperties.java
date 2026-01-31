@@ -5,17 +5,17 @@
 
 package ws.spring.ssh.autoconfigure;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import ws.spring.ssh.AbstractSshSource;
 import ws.spring.ssh.SshSource;
 import ws.spring.ssh.support.SshForwardDeclaration;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 /**
  * @author WindShadow
- * @version 2024-03-30.
+ * @version 2024-03-30
  */
 
 abstract class SshSourceProperties {

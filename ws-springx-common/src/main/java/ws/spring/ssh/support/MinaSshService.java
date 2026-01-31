@@ -15,7 +15,7 @@ import java.util.Objects;
 
 /**
  * @author WindShadow
- * @version 2024-03-03.
+ * @version 2024-03-03
  */
 public class MinaSshService extends AbstractSshService {
 

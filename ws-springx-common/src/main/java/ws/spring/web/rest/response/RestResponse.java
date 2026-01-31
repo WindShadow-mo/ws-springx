@@ -9,7 +9,7 @@ package ws.spring.web.rest.response;
  * restful请求的响应
  *
  * @author WindShadow
- * @version 2021-12-20.
+ * @version 2021-12-20
  */
 
 

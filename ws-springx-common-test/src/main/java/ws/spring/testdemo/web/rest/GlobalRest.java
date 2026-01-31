@@ -5,13 +5,13 @@
 
 package ws.spring.testdemo.web.rest;
 
-import org.springframework.lang.Nullable;
+import org.jspecify.annotations.Nullable;
 import ws.spring.web.rest.response.RestCodeSupplier;
 import ws.spring.web.rest.response.RestResponse;
 
 /**
  * @author WindShadow
- * @version 2022-06-12.
+ * @version 2022-06-12
  */
 
 public enum GlobalRest implements RestCodeSupplier {

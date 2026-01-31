@@ -5,7 +5,7 @@
 
 package ws.spring.util.concurrent;
 
-import org.springframework.lang.Nullable;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
@@ -14,7 +14,7 @@ import java.util.function.BiFunction;
 
 /**
  * @author WindShadow
- * @version 2025-06-08.
+ * @version 2025-06-08
  */
 public class HashTemporaryLock<E> implements TemporaryLock<E> {
 
@@ -40,7 +40,8 @@ public class HashTemporaryLock<E> implements TemporaryLock<E> {
         }
     }
 
-    private static class ExclusiveException extends RuntimeException {}
+    private static class ExclusiveException extends RuntimeException {
+    }
 
     private final static class IdentityWrapper<E> {
 

@@ -24,7 +24,7 @@ import java.util.function.BiPredicate;
 
 /**
  * @author WindShadow
- * @version 2022-01-27.
+ * @version 2022-01-27
  * @see AnnotationMethodPeeper
  */
 

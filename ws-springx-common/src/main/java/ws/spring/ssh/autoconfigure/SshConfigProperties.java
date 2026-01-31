@@ -5,10 +5,10 @@
 
 package ws.spring.ssh.autoconfigure;
 
+import jakarta.validation.Valid;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.validation.annotation.Validated;
 
-import javax.validation.Valid;
 import java.util.Collections;
 import java.util.Map;
 

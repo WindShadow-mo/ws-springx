@@ -16,7 +16,7 @@ import java.util.function.Consumer;
 
 /**
  * @author WindShadow
- * @version 2024-03-26.
+ * @version 2024-03-26
  */
 public class DelegateSshOperator implements SshOperator {
 

@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
 
 /**
  * @author WindShadow
- * @version 2022-01-21.
+ * @version 2022-01-21
  */
 
 public class MethodPeeperInterceptor implements MethodInterceptor {

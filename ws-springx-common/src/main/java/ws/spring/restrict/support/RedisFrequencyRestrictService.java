@@ -21,7 +21,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * 基于Redis实现的频控服务
  *
  * @author WindShadow
- * @version 2024-10-15.
+ * @version 2024-10-15
  */
 public class RedisFrequencyRestrictService extends GenericFrequencyRestrictService {
 
@@ -38,10 +38,9 @@ public class RedisFrequencyRestrictService extends GenericFrequencyRestrictServi
 
     protected static class RedisFrequencyRestrictor extends GenericFrequencyRestrictor {
 
-        private final Lock mainLock = new ReentrantLock();
         private static final String KEY_FORMAT = "$Restrictor.%s.%s.T%s";
         private static final String DEFAULT_VALUE = "";
-
+        private final Lock mainLock = new ReentrantLock();
         private final ValueOperations<String, String> valueOps;
         private final String restrictorKeyPattern;
 
@@ -96,7 +95,7 @@ public class RedisFrequencyRestrictService extends GenericFrequencyRestrictServi
                     mainLock.unlock();
                 }
             }
-            if (count == frequency){
+            if (count == frequency) {
                 return true;
             } else {
                 throw new IllegalStateException(String.format("The count[%d] of refer[%s] exceeds frequency[%d]", count, refer, frequency));

@@ -15,7 +15,7 @@ import ws.spring.restrict.RestrictorDeclarationException;
 
 /**
  * @author WindShadow
- * @version 2024-01-26.
+ * @version 2024-01-26
  */
 
 public abstract class AbstractFrequencyRestrictService implements FrequencyRestrictService, DisposableBean {

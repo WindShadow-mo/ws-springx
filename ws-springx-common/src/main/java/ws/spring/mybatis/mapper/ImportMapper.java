@@ -11,7 +11,7 @@ import java.lang.annotation.*;
 
 /**
  * @author WindShadow
- * @version 2025-03-30.
+ * @version 2025-03-30
  */
 @Repeatable(ImportMapper.List.class)
 @Target({ElementType.TYPE})

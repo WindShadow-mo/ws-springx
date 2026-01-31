@@ -41,13 +41,13 @@ import java.lang.annotation.*;
  *      // ...
  *  }</pre>
  * <p>
- * 实际 FormModel 是处理来自{@link javax.servlet.http.HttpServletRequest#getParameter(String)}的参数键值对，
+ * 实际 FormModel 是处理来自{@link jakarta.servlet.http.HttpServletRequest#getParameter(String)}的参数键值对，
  * 如上述示例代码，它会将从 Request 对象中获取 "user.name" 的参数值绑定到 User 对象的 name 属性
  * <p><b>NOTE</b>：FormModel 不支持基础类型与其包装类的绑定以及String类型，因为使用{@link org.springframework.web.bind.annotation.RequestParam}就可以达到相同的效果
  *
  * @author WindShadow
- * @version 2022-06-25.
- * @see javax.servlet.http.HttpServletRequest
+ * @version 2022-06-25
+ * @see jakarta.servlet.http.HttpServletRequest
  * @see org.springframework.web.bind.WebDataBinder
  */
 

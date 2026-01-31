@@ -5,13 +5,13 @@
 
 package ws.spring.restrict.support;
 
-import org.springframework.lang.NonNull;
+import org.jspecify.annotations.NonNull;
 import org.springframework.util.Assert;
 import ws.spring.restrict.FrequencyRestrictor;
 
 /**
  * @author WindShadow
- * @version 2024-02-23.
+ * @version 2024-02-23
  */
 public abstract class AbstractFrequencyRestrictor implements FrequencyRestrictor {
 

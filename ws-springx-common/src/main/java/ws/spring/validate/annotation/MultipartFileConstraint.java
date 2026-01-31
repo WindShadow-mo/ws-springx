@@ -5,21 +5,20 @@
 
 package ws.spring.validate.annotation;
 
+import jakarta.validation.Constraint;
+import jakarta.validation.Payload;
 import ws.spring.validate.MultipartFileConstraintValidator;
 
-import javax.validation.Constraint;
-import javax.validation.Payload;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 import static java.lang.annotation.ElementType.*;
-import static java.lang.annotation.ElementType.TYPE_USE;
 
 /**
  * @author WindShadow
- * @version 2022-11-22.
+ * @version 2022-11-22
  */
 
 @Retention(RetentionPolicy.RUNTIME)

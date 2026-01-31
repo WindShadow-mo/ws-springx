@@ -5,8 +5,8 @@
 
 package ws.spring.testdemo.support.redis;
 
+import org.jspecify.annotations.Nullable;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.lang.Nullable;
 import org.springframework.util.ResourceUtils;
 import redis.embedded.RedisExecProvider;
 import redis.embedded.RedisServer;
@@ -20,7 +20,7 @@ import java.util.Optional;
 
 /**
  * @author WindShadow
- * @version 2024-10-23.
+ * @version 2024-10-23
  */
 public class DefaultRedisServerFactory implements RedisServerFactory, InitializingBean {
 
@@ -54,7 +54,7 @@ public class DefaultRedisServerFactory implements RedisServerFactory, Initializi
         overrideExecutable(provider, OS.MAC_OS_X, properties.getMac());
     }
 
-    static void overrideExecutable(RedisExecProvider provider, OS os, @Nullable RedisServerProperties.RedisServerExecutable executable) throws FileNotFoundException {
+    static void overrideExecutable(RedisExecProvider provider, OS os, RedisServerProperties.@Nullable RedisServerExecutable executable) throws FileNotFoundException {
 
         if (executable == null) return;
 

@@ -15,7 +15,7 @@ import java.util.function.Predicate;
  * 分段流
  *
  * @author WindShadow
- * @version 2025-05-28.
+ * @version 2025-05-28
  * @see SegmentStreams
  */
 public interface SegmentStream<E> extends AutoCloseable, Iterable<E> {

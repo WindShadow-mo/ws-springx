@@ -5,11 +5,11 @@
 
 package ws.spring.restrict;
 
-import org.springframework.lang.NonNull;
+import org.jspecify.annotations.NonNull;
 
 /**
  * @author WindShadow
- * @version 2024-02-24.
+ * @version 2024-02-24
  */
 public interface FrequencyRestrictRegistrar {
 

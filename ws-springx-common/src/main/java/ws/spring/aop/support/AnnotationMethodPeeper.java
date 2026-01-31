@@ -5,13 +5,13 @@
 
 package ws.spring.aop.support;
 
+import org.jspecify.annotations.Nullable;
 import org.springframework.aop.support.AopUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.core.ResolvableType;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.core.annotation.Order;
-import org.springframework.lang.Nullable;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.util.StringUtils;
 import ws.spring.aop.MethodPeeper;
@@ -31,7 +31,7 @@ import java.util.concurrent.Executor;
 
 /**
  * @author WindShadow
- * @version 2022-01-21.
+ * @version 2022-01-21
  */
 
 public class AnnotationMethodPeeper<T> extends AsyncMethodPeeper<T> implements BeanPostProcessor {
@@ -52,24 +52,6 @@ public class AnnotationMethodPeeper<T> extends AsyncMethodPeeper<T> implements B
 
     public AnnotationMethodPeeper(GlobalMethodPeekHandler globalMethodPeekHandler, Executor executor) {
         super(globalMethodPeekHandler, executor);
-    }
-
-    private static String getExposurePointName(ExposurePoint exposurePoint, Method method, Class<?> clazz) {
-
-        String exposurePointName = (String) AnnotationUtils.getValue(exposurePoint);
-        if (!StringUtils.hasText(exposurePointName)) {
-            exposurePointName = GenericClassUtils.getMethodPrimaryName(method, clazz);
-        }
-        return exposurePointName;
-    }
-
-    private static String getPeekPointName(Peeper peeper, PeekPoint peekPoint, Method method) {
-
-        String peekPointName = (String) AnnotationUtils.getValue(peekPoint);
-        if (!StringUtils.hasText(peekPointName)) {
-            peekPointName = GenericClassUtils.getMethodPrimaryName(method, peeper.value());
-        }
-        return peekPointName;
     }
 
     @Override
@@ -220,5 +202,23 @@ public class AnnotationMethodPeeper<T> extends AsyncMethodPeeper<T> implements B
         } catch (InvocationTargetException e) {
             throw new PeekMethodInvokeException(e);
         }
+    }
+
+    private static String getExposurePointName(ExposurePoint exposurePoint, Method method, Class<?> clazz) {
+
+        String exposurePointName = (String) AnnotationUtils.getValue(exposurePoint);
+        if (!StringUtils.hasText(exposurePointName)) {
+            exposurePointName = GenericClassUtils.getMethodPrimaryName(method, clazz);
+        }
+        return exposurePointName;
+    }
+
+    private static String getPeekPointName(Peeper peeper, PeekPoint peekPoint, Method method) {
+
+        String peekPointName = (String) AnnotationUtils.getValue(peekPoint);
+        if (!StringUtils.hasText(peekPointName)) {
+            peekPointName = GenericClassUtils.getMethodPrimaryName(method, peeper.value());
+        }
+        return peekPointName;
     }
 }

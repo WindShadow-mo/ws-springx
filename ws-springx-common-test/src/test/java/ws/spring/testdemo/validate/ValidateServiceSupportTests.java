@@ -5,6 +5,8 @@
 
 package ws.spring.testdemo.validate;
 
+import jakarta.validation.ConstraintDeclarationException;
+import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -15,15 +17,13 @@ import org.springframework.mock.web.MockMultipartFile;
 import ws.spring.testdemo.SpringxAppTests;
 import ws.spring.testdemo.validate.enums.Direction;
 
-import javax.validation.ConstraintDeclarationException;
-import javax.validation.ConstraintViolationException;
 import java.lang.annotation.ElementType;
 import java.util.Locale;
 import java.util.UUID;
 
 /**
  * @author WindShadow
- * @version 2022-09-19.
+ * @version 2022-09-19
  * @see ValidateServiceSupport
  */
 

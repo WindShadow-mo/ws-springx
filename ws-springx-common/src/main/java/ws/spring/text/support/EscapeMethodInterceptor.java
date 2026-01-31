@@ -7,9 +7,9 @@ package ws.spring.text.support;
 
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
+import org.jspecify.annotations.Nullable;
 import org.springframework.beans.BeanUtils;
 import org.springframework.core.annotation.AnnotatedElementUtils;
-import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
 import ws.spring.text.Escaper;
 import ws.spring.text.annotation.Escape;
@@ -22,7 +22,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author WindShadow
- * @version 2023-05-01.
+ * @version 2023-05-01
  */
 
 class EscapeMethodInterceptor implements MethodInterceptor {

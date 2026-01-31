@@ -12,7 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author WindShadow
- * @version 2024-10-15.
+ * @version 2024-10-15
  */
 public abstract class GenericFrequencyRestrictService extends AbstractFrequencyRestrictService {
 

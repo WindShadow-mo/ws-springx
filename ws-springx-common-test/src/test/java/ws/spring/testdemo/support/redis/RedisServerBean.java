@@ -15,14 +15,16 @@ import java.util.Objects;
 
 /**
  * @author WindShadow
- * @version 2024-10-18.
+ * @version 2024-10-18
  */
 
 public class RedisServerBean implements InitializingBean, ApplicationRunner {
 
     private final RedisServer server;
 
-    /** 延迟关闭服务的时间（毫秒） */
+    /**
+     * 延迟关闭服务的时间（毫秒）
+     */
     private final int stopTimeout;
 
     public RedisServerBean(RedisServer server, int stopTimeout) {

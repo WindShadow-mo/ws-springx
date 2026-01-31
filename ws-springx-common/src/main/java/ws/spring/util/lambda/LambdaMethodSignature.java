@@ -15,15 +15,12 @@ import java.util.stream.Collectors;
  * 此类将维护一个方法的参数类型与返回值类型信息
  *
  * @author WindShadow
- * @version 2024-08-08.
+ * @version 2024-08-08
  */
 class LambdaMethodSignature {
 
     private static final Map<Character, Class<?>> SIGNATURE_PRIMITIVE_TYPE_MAPPING;
     private static final Map<Class<?>, Character> PRIMITIVE_TYPE_SIGNATURE_MAPPING;
-
-    private final Class<?>[] parameterTypes;
-    private final Class<?> returnType;
 
     static {
 
@@ -40,9 +37,12 @@ class LambdaMethodSignature {
         SIGNATURE_PRIMITIVE_TYPE_MAPPING = Collections.unmodifiableMap(signatureMap);
         PRIMITIVE_TYPE_SIGNATURE_MAPPING = Collections.unmodifiableMap(
                 signatureMap.entrySet()
-                .stream()
-                .collect(Collectors.toMap(Map.Entry::getValue, Map.Entry::getKey)));
+                        .stream()
+                        .collect(Collectors.toMap(Map.Entry::getValue, Map.Entry::getKey)));
     }
+
+    private final Class<?>[] parameterTypes;
+    private final Class<?> returnType;
 
     LambdaMethodSignature(Class<?>[] parameterTypes, Class<?> returnType) {
         this.parameterTypes = Objects.requireNonNull(parameterTypes);

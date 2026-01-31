@@ -9,7 +9,7 @@ import java.time.Duration;
 
 /**
  * @author WindShadow
- * @version 2024-03-01.
+ * @version 2024-03-01
  */
 public interface SshDuration {
 

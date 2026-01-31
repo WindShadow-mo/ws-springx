@@ -5,7 +5,7 @@
 
 package ws.spring.aop.support;
 
-import org.springframework.lang.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.springframework.util.Assert;
 import ws.spring.aop.MethodPeeper;
 import ws.spring.aop.ReturnValuePeeper;
@@ -14,7 +14,7 @@ import java.util.concurrent.Executor;
 
 /**
  * @author WindShadow
- * @version 2022-02-12.
+ * @version 2022-02-12
  */
 
 public abstract class AsyncMethodPeeper<T> extends AbstractMethodPeeper<T> {

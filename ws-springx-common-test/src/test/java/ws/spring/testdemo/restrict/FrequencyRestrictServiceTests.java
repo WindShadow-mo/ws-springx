@@ -22,18 +22,19 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author WindShadow
- * @version 2024-02-24.
+ * @version 2024-02-24
  * @see FrequencyRestrictService
  */
 
 @Slf4j
 public abstract class FrequencyRestrictServiceTests {
 
-    protected final Random random = new Random();
     private final AtomicInteger number = new AtomicInteger(0);
+    protected final Random random = new Random();
     protected FrequencyRestrictService frs;
 
     protected abstract FrequencyRestrictService createFrequencyRestrictService();
+
     protected abstract long calculateRunDuration(long durationSeconds);
 
     protected FrequencyRestrictorDefinition randomDefinition() {

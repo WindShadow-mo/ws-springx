@@ -18,7 +18,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * 频控服务一种简单实现
  *
  * @author WindShadow
- * @version 2024-01-26.
+ * @version 2024-01-26
  */
 
 public class SimpleFrequencyRestrictService extends GenericFrequencyRestrictService {

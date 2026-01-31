@@ -8,12 +8,12 @@ package ws.spring.mybatis.mapper;
 import org.apache.ibatis.builder.xml.XMLMapperBuilder;
 import org.apache.ibatis.executor.ErrorContext;
 import org.apache.ibatis.session.Configuration;
+import org.jspecify.annotations.Nullable;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
-import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
 
 import java.io.IOException;
@@ -22,7 +22,7 @@ import java.io.IOException;
  * 另一种mybatis mapper工厂bean，可根据mybatis配置灵活注册mapper接口和解析对应xml资源，其中xml资源是可选的
  *
  * @author WindShadow
- * @version 2025-03-29.
+ * @version 2025-03-29
  */
 public class EnhancedMapperFactory<T> extends SqlSessionDaoSupport implements FactoryBean<T> {
 

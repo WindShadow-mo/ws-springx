@@ -9,7 +9,7 @@ import ws.spring.lang.enums.EnumValue;
 
 /**
  * @author WindShadow
- * @version 2022-02-19.
+ * @version 2022-02-19
  */
 
 public enum Way implements EnumValue<Integer> {

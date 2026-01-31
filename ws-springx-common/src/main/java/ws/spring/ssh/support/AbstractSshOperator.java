@@ -17,7 +17,7 @@ import java.util.function.Consumer;
 
 /**
  * @author WindShadow
- * @version 2024-02-29.
+ * @version 2024-02-29
  */
 
 public abstract class AbstractSshOperator implements SshOperator {

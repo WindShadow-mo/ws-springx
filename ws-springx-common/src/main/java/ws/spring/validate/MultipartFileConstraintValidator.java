@@ -5,16 +5,15 @@
 
 package ws.spring.validate;
 
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
 import ws.spring.validate.annotation.MultipartFileConstraint;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
-
 /**
  * @author WindShadow
- * @version 2022-11-22.
+ * @version 2022-11-22
  */
 
 public class MultipartFileConstraintValidator implements ConstraintValidator<MultipartFileConstraint, MultipartFile> {

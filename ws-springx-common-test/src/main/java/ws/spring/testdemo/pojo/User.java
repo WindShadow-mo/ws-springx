@@ -5,12 +5,11 @@
 
 package ws.spring.testdemo.pojo;
 
+import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-
-import javax.validation.constraints.Email;
 
 /**
  * @author WindShadow

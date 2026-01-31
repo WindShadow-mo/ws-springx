@@ -9,7 +9,6 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
-
 import ws.spring.context.annotation.YamlSource;
 import ws.spring.testdemo.support.redis.DefaultRedisServerFactory;
 import ws.spring.testdemo.support.redis.RedisServerBean;
@@ -20,7 +19,7 @@ import java.io.IOException;
 
 /**
  * @author WindShadow
- * @version 2024-10-23.
+ * @version 2024-10-23
  */
 @TestConfiguration(proxyBeanMethods = false)
 @ConditionalOnMissingBean({RedisServerFactory.class, RedisServerBean.class})

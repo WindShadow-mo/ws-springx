@@ -5,12 +5,12 @@
 
 package ws.spring.validate;
 
-import org.springframework.lang.NonNull;
+import jakarta.validation.ConstraintDeclarationException;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
+import org.jspecify.annotations.NonNull;
 import org.springframework.util.CollectionUtils;
 
-import javax.validation.ConstraintDeclarationException;
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
 import java.lang.annotation.Annotation;
 import java.util.Set;
 
@@ -18,7 +18,7 @@ import java.util.Set;
  * 元素范围约束检验器抽象实现
  *
  * @author WindShadow
- * @version 2021-12-16.
+ * @version 2021-12-16
  */
 
 public abstract class AbstractElementRangeConstraintValidator<A extends Annotation, T> implements ConstraintValidator<A, T> {

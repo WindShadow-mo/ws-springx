@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import ws.spring.restrict.RestrictedCriticalException;
-
 import ws.spring.testdemo.SpringxAppTests;
 import ws.spring.testdemo.service.NeedRestrictService;
 
@@ -18,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @author WindShadow
- * @version 2024-02-24.
+ * @version 2024-02-24
  */
 @Slf4j
 public class FrequencyRestrictTests extends SpringxAppTests {

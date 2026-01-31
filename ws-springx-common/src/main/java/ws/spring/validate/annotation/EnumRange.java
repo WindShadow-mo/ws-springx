@@ -5,11 +5,11 @@
 
 package ws.spring.validate.annotation;
 
+import jakarta.validation.Constraint;
+import jakarta.validation.ConstraintDeclarationException;
+import jakarta.validation.Payload;
 import ws.spring.validate.EnumRangeRangeConstraintValidator;
 
-import javax.validation.Constraint;
-import javax.validation.ConstraintDeclarationException;
-import javax.validation.Payload;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -36,7 +36,7 @@ import static java.lang.annotation.ElementType.*;
  * <p>当{@link EnumRange}修饰的参数类型和{@link EnumRange#enumType()}不一致时，将在校验时抛出{@linkplain ConstraintDeclarationException 约束声明异常}，开发者应该避免约束声明错误
  *
  * @author WindShadow
- * @version 2021-12-16.
+ * @version 2021-12-16
  * @see EnumRangeRangeConstraintValidator
  */
 

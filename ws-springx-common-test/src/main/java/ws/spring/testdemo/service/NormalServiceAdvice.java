@@ -16,7 +16,7 @@ import ws.spring.aop.annotation.Peeper;
 
 /**
  * @author WindShadow
- * @version 2022-01-23.
+ * @version 2022-01-23
  */
 
 @Slf4j

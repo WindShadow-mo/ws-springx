@@ -15,7 +15,7 @@ import ws.spring.aop.annotation.ExposurePoint;
 
 /**
  * @author WindShadow
- * @version 2022-01-21.
+ * @version 2022-01-21
  */
 
 public class MethodPeeperPostProcessor extends AbstractBeanFactoryAwareAdvisingPostProcessor implements InitializingBean {

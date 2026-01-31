@@ -11,7 +11,7 @@ import ws.spring.ssh.annotation.SshProxy;
 
 /**
  * @author WindShadow
- * @version 2025-07-06.
+ * @version 2025-07-06
  */
 @Profile("ssh")
 @SshProxy(source = "${spring.ext.ssh.test.proxy.source}",

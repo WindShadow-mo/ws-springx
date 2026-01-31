@@ -7,7 +7,7 @@ package ws.spring.constant;
 
 /**
  * @author WindShadow
- * @version 2022-08-27.
+ * @version 2022-08-27
  */
 public interface NetworkConstants {
 

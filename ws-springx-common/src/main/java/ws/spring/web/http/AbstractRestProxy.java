@@ -5,13 +5,13 @@
 
 package ws.spring.web.http;
 
+import org.jspecify.annotations.Nullable;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
-import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -27,22 +27,21 @@ import java.util.Objects;
 
 /**
  * @author WindShadow
- * @version 2025-07-15.
+ * @version 2025-07-15
  */
 public abstract class AbstractRestProxy implements RestProxy {
 
-    private boolean send = false;
-    private HttpMethod method;
     private final HttpHeaders headers;
     private final UriComponentsBuilder builder;
-    
+    private boolean send = false;
+    private HttpMethod method;
     @Nullable
     private RequestBodyFetcher<?> bodyRequestBodyFetcher;
 
     protected AbstractRestProxy(HttpMethod method, HttpHeaders headers, URI uri, @Nullable RequestBodyFetcher<?> bodyRequestBodyFetcher) {
         this(method, headers, UriComponentsBuilder.fromUri(uri), bodyRequestBodyFetcher);
     }
-    
+
     protected AbstractRestProxy(HttpMethod method, HttpHeaders headers, UriComponentsBuilder builder, @Nullable RequestBodyFetcher<?> bodyRequestBodyFetcher) {
 
         this.method = Objects.requireNonNull(method);
@@ -76,7 +75,7 @@ public abstract class AbstractRestProxy implements RestProxy {
     public void replaceHeader(String header, List<String> values) {
 
         checkState();
-        headers.replace(header, values);
+        headers.put(header, values);
     }
 
     @Override
@@ -227,7 +226,7 @@ public abstract class AbstractRestProxy implements RestProxy {
         if (origin.startsWith("http://") || origin.startsWith("https://")) {
             URL url;
             try {
-                url = new URL(origin);
+                url = URI.create(origin).toURL();
             } catch (MalformedURLException e) {
                 throw new IllegalArgumentException(String.format("[%s] is not a valid origin", origin));
             }
@@ -280,7 +279,7 @@ public abstract class AbstractRestProxy implements RestProxy {
             this.send = true;
         }
     }
-    
+
     private RequestEntity<Object> buildRequestEntity() {
 
         Object body;

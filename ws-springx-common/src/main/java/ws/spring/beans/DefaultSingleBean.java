@@ -7,7 +7,7 @@ package ws.spring.beans;
 
 /**
  * @author WindShadow
- * @version 2023-07-21.
+ * @version 2023-07-21
  */
 
 public class DefaultSingleBean<T> implements SingleBean<T> {

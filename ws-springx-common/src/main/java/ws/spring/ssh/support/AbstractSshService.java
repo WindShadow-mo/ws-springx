@@ -14,14 +14,13 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author WindShadow
- * @version 2024-02-27.
+ * @version 2024-02-27
  */
 public abstract class AbstractSshService implements SshService {
 
-    protected final SshDuration sshDuration;
-
     private final Map<String, SshSource> sshSources = new ConcurrentHashMap<>(16);
     private final Map<String, SshOperator> sshOperators = new ConcurrentHashMap<>(16);
+    protected final SshDuration sshDuration;
 
     protected AbstractSshService(SshDuration sshDuration) {
         this.sshDuration = Objects.requireNonNull(sshDuration);

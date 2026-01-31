@@ -5,11 +5,11 @@
 
 package ws.spring.web.http;
 
+import org.jspecify.annotations.Nullable;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.lang.Nullable;
 import org.springframework.util.MultiValueMap;
 
 import java.io.IOException;
@@ -19,20 +19,14 @@ import java.util.Map;
 
 /**
  * @author WindShadow
- * @version 2025-07-14.
+ * @version 2025-07-14
  */
 public interface RestProxy {
 
-    @FunctionalInterface
-    interface RequestBodyFetcher<T> {
-
-        T getBody() throws IOException;
-    }
+    void addHeader(String header, String value);
 
     // ~ opt
     // ==================================
-
-    void addHeader(String header, String value);
 
     void removeHeader(String header);
 
@@ -76,19 +70,18 @@ public interface RestProxy {
 
     void replaceBody(RequestBodyFetcher<Object> bodySupplier);
 
-
     void replacePath(@Nullable String path);
+
+    boolean isSend();
 
     // ~ proxy
     // ==================================
 
-    boolean isSend();
-
     /**
      * @param origin 如 http://127.0.0.1:8080
      * @param type
-     * @return
      * @param <T>
+     * @return
      */
     <T> ResponseEntity<T> proxy(String origin, Class<T> type);
 
@@ -105,12 +98,18 @@ public interface RestProxy {
     <T> ResponseEntity<T> proxy(String scheme, String host, int port, Class<T> type);
 
     /**
-     * @param scheme http或https
-     * @param host 如 127.0.0.1或localhost
-     * @param port 如 8080
+     * @param scheme  http或https
+     * @param host    如 127.0.0.1或localhost
+     * @param port    如 8080
      * @param typeRef
-     * @return
      * @param <T>
+     * @return
      */
     <T> ResponseEntity<T> proxy(String scheme, String host, int port, ParameterizedTypeReference<T> typeRef);
+
+    @FunctionalInterface
+    interface RequestBodyFetcher<T> {
+
+        T getBody() throws IOException;
+    }
 }

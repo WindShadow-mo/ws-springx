@@ -15,7 +15,7 @@ import java.lang.annotation.*;
  * 通常在{@link org.springframework.context.annotation.Configuration}配置类上使用
  *
  * @author WindShadow
- * @version 2025-06-29.
+ * @version 2025-06-29
  */
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)

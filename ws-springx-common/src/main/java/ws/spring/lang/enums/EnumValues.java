@@ -5,10 +5,10 @@
 
 package ws.spring.lang.enums;
 
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 import org.springframework.core.ResolvableType;
 import org.springframework.core.convert.converter.ConverterRegistry;
-import org.springframework.lang.NonNull;
-import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
 
 import java.util.*;
@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
  * 提供操作{@link EnumValue}的工具类
  *
  * @author WindShadow
- * @version 2022-02-19.
+ * @version 2022-02-19
  * @see EnumValue
  */
 

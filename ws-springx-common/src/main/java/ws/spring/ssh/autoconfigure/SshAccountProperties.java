@@ -5,14 +5,13 @@
 
 package ws.spring.ssh.autoconfigure;
 
+import jakarta.validation.constraints.NotBlank;
 import ws.spring.ssh.AbstractSshSource;
 import ws.spring.ssh.SshAccount;
 
-import javax.validation.constraints.NotBlank;
-
 /**
  * @author WindShadow
- * @version 2024-03-28.
+ * @version 2024-03-28
  */
 public class SshAccountProperties extends SshSourceProperties {
 

@@ -19,7 +19,7 @@ import java.util.Set;
  * 支持设置日志文件权限的滚动策略
  *
  * @author WindShadow
- * @version 2022-11-06.
+ * @version 2022-11-06
  */
 
 public class AccessControlBasedRollingPolicy<E> extends SizeAndTimeBasedRollingPolicy<E> {

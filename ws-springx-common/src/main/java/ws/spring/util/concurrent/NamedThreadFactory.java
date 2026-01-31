@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author WindShadow
- * @version 2024-11-24.
+ * @version 2024-11-24
  */
 public final class NamedThreadFactory implements ThreadFactory {
 

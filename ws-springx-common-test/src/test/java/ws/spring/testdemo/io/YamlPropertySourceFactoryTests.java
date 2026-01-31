@@ -17,7 +17,7 @@ import java.io.IOException;
 
 /**
  * @author WindShadow
- * @version 2024-10-24.
+ * @version 2024-10-24
  */
 public class YamlPropertySourceFactoryTests {
 

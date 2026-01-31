@@ -13,7 +13,7 @@ import java.util.Random;
 
 /**
  * @author WindShadow
- * @version 2024-12-20.
+ * @version 2024-12-20
  */
 public class NamedThreadFactoryTests {
 

@@ -14,9 +14,9 @@ import ws.spring.restrict.support.RedisFrequencyRestrictService;
 
 /**
  * @author WindShadow
- * @version 2024-10-17.
+ * @version 2024-10-17
  */
-@ConditionalOnProperty(prefix = "app.", name = "frequency-restrictor", havingValue = "redis")
+@ConditionalOnProperty(prefix = "app", name = "frequency-restrictor", havingValue = "redis")
 @Configuration(proxyBeanMethods = false)
 public class FrequencyRestrictConfig {
 

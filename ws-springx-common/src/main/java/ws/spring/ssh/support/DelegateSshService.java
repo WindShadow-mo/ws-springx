@@ -5,13 +5,15 @@
 
 package ws.spring.ssh.support;
 
-import ws.spring.ssh.*;
+import ws.spring.ssh.SshOperator;
+import ws.spring.ssh.SshService;
+import ws.spring.ssh.SshSource;
 
 import java.util.Objects;
 
 /**
  * @author WindShadow
- * @version 2024-03-03.
+ * @version 2024-03-03
  */
 public class DelegateSshService implements SshService {
 

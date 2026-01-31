@@ -11,7 +11,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 /**
  * @author WindShadow
- * @version 2025-06-23.
+ * @version 2025-06-23
  */
 class TypeExcludeFilterRegistrar implements ApplicationContextInitializer<ConfigurableApplicationContext> {
 

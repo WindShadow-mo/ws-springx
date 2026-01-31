@@ -9,7 +9,7 @@ import ws.spring.lang.enums.EnumValue;
 
 /**
  * @author WindShadow
- * @version 2022-11-12.
+ * @version 2022-11-12
  */
 
 public enum LogEnum implements EnumValue<String> {

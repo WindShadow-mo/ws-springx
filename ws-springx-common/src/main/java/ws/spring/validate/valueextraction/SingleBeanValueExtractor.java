@@ -5,14 +5,13 @@
 
 package ws.spring.validate.valueextraction;
 
+import jakarta.validation.valueextraction.ExtractedValue;
+import jakarta.validation.valueextraction.ValueExtractor;
 import ws.spring.beans.SingleBean;
-
-import javax.validation.valueextraction.ExtractedValue;
-import javax.validation.valueextraction.ValueExtractor;
 
 /**
  * @author WindShadow
- * @version 2023-07-20.
+ * @version 2023-07-20
  */
 
 public class SingleBeanValueExtractor implements ValueExtractor<SingleBean<@ExtractedValue ?>> {

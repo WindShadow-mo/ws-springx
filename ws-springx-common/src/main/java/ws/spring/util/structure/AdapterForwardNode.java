@@ -10,7 +10,7 @@ import java.util.function.Function;
 
 /**
  * @author WindShadow
- * @version 2023-07-03.
+ * @version 2023-07-03
  */
 
 class AdapterForwardNode<E, K> extends BasicTreeNode<E> implements ForwardNode<K> {

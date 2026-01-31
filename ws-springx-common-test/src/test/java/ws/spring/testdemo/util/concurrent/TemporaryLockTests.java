@@ -7,7 +7,6 @@ package ws.spring.testdemo.util.concurrent;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import ws.spring.util.concurrent.HashTemporaryLock;
 import ws.spring.util.concurrent.TemporaryLock;
@@ -18,7 +17,7 @@ import java.util.concurrent.*;
 
 /**
  * @author WindShadow
- * @version 2025-06-09.
+ * @version 2025-06-09
  */
 public class TemporaryLockTests {
 

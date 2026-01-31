@@ -13,7 +13,7 @@ import java.lang.reflect.Modifier;
 
 /**
  * @author WindShadow
- * @version 2022-11-06.
+ * @version 2022-11-06
  */
 
 public class GenericReflectionUtils extends ReflectionUtils {

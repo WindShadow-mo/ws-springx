@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 /**
  * @author WindShadow
- * @version 2022-01-26.
+ * @version 2022-01-26
  */
 
 public abstract class GenericClassUtils extends ClassUtils {

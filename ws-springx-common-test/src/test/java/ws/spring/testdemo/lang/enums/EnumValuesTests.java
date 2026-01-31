@@ -22,7 +22,7 @@ import java.util.stream.Stream;
 
 /**
  * @author WindShadow
- * @version 2022-02-19.
+ * @version 2022-02-19
  * @see EnumValues
  */
 
@@ -45,8 +45,8 @@ public class EnumValuesTests {
     @Test
     void getValueMapTest() {
 
-        Map<Integer,Way> wayMap =  Stream.of(Way.Up).collect(Collectors.toMap(EnumValue::getValue, Function.identity()));
-        Map<Integer,Way> map = EnumValues.getValueMap(Way.class);
+        Map<Integer, Way> wayMap = Stream.of(Way.Up).collect(Collectors.toMap(EnumValue::getValue, Function.identity()));
+        Map<Integer, Way> map = EnumValues.getValueMap(Way.class);
         Assertions.assertNotNull(map);
         Assertions.assertEquals(wayMap, map);
     }
@@ -70,7 +70,7 @@ public class EnumValuesTests {
     @Test
     void complyWithTest() {
 
-        Assertions.assertTrue(EnumValues.complyWith(Way.class,Way.Up.getValue()));
+        Assertions.assertTrue(EnumValues.complyWith(Way.class, Way.Up.getValue()));
     }
 
     @Test

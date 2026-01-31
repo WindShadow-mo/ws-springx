@@ -5,27 +5,27 @@
 
 package ws.spring.testdemo.validate;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.multipart.MultipartFile;
+import ws.spring.beans.SingleBean;
 import ws.spring.testdemo.pojo.Person;
 import ws.spring.testdemo.validate.enums.Direction;
-import ws.spring.beans.SingleBean;
 import ws.spring.validate.annotation.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import java.lang.annotation.ElementType;
 import java.util.List;
 import java.util.Map;
 
 /**
  * @author WindShadow
- * @version 2022-09-19.
+ * @version 2022-09-19
  */
 
 @Slf4j

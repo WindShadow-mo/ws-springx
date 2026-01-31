@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * @author WindShadow
- * @version 2021-12-20.
+ * @version 2021-12-20
  */
 
 public class PageData<T> {
@@ -33,21 +33,13 @@ public class PageData<T> {
         return pageNum;
     }
 
-    public int getPageSize() {
-        return pageSize;
-    }
-
-    public long getTotal() {
-        return total;
-    }
-
-    public List<T> getElements() {
-        return elements;
-    }
-
     public PageData<T> setPageNum(int pageNum) {
         this.pageNum = pageNum;
         return this;
+    }
+
+    public int getPageSize() {
+        return pageSize;
     }
 
     public PageData<T> setPageSize(int pageSize) {
@@ -55,9 +47,17 @@ public class PageData<T> {
         return this;
     }
 
+    public long getTotal() {
+        return total;
+    }
+
     public PageData<T> setTotal(long total) {
         this.total = total;
         return this;
+    }
+
+    public List<T> getElements() {
+        return elements;
     }
 
     public PageData<T> setElements(List<T> elements) {

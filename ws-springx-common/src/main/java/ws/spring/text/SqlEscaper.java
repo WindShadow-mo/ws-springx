@@ -9,10 +9,15 @@ import org.springframework.util.StringUtils;
 
 /**
  * @author WindShadow
- * @version 2023-06-06.
+ * @version 2023-06-06
  */
 
 public class SqlEscaper implements Escaper {
+
+    @Override
+    public String escape(String value) {
+        return escapeSqlValue(value);
+    }
 
     public static String escapeSqlValue(String value) {
 
@@ -29,10 +34,5 @@ public class SqlEscaper implements Escaper {
             return sb.toString();
         }
         return value;
-    }
-
-    @Override
-    public String escape(String value) {
-        return escapeSqlValue(value);
     }
 }

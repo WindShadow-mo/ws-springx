@@ -5,12 +5,18 @@
 
 package ws.spring.testdemo.util;
 
-import org.apache.http.client.HttpClient;
-import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.hc.client5.http.classic.HttpClient;
+import org.apache.hc.client5.http.config.ConnectionConfig;
+import org.apache.hc.client5.http.config.RequestConfig;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
+import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManagerBuilder;
+import org.apache.hc.client5.http.ssl.DefaultClientTlsStrategy;
+import org.apache.hc.client5.http.ssl.TlsSocketStrategy;
+import org.apache.hc.core5.util.Timeout;
+import org.jspecify.annotations.NonNull;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
-import org.springframework.lang.NonNull;
 import org.springframework.util.Assert;
 import org.springframework.web.client.RestTemplate;
 import ws.spring.net.TlsAssistants;
@@ -21,7 +27,7 @@ import javax.net.ssl.SSLContext;
  * http请求客户端工具类
  *
  * @author WindShadow
- * @version 2022-08-28.
+ * @version 2022-08-28
  * @see RestTemplate
  * @see HttpComponentsClientHttpRequestFactory
  * @see HttpClient
@@ -78,7 +84,7 @@ public class HttpClientAssistants {
      * @return 双向认证http客户端请求工厂
      */
     public static HttpComponentsClientHttpRequestFactory getMutualAuthClientHttpRequestFactory(@NonNull String keyStoreResource, @NonNull char[] keyStorePassword, @NonNull char[] keyPassword,
-                                                                                 @NonNull String trustResource, @NonNull char[] trustPassword) {
+                                                                                               @NonNull String trustResource, @NonNull char[] trustPassword) {
         return getIgnoreHostnameValidityClientHttpRequestFactory(
                 TlsAssistants.createMutualAuthTlsContext(keyStoreResource, keyStorePassword, keyPassword, trustResource, trustPassword));
     }
@@ -97,12 +103,23 @@ public class HttpClientAssistants {
     public static CloseableHttpClient getIgnoreHostnameValidityHttpClient(@NonNull SSLContext sslContext) {
 
         Assert.notNull(sslContext, "The sslContext must not be null");
-        return HttpClientBuilder.create()
-                .setSSLSocketFactory(new SSLConnectionSocketFactory(
-                        sslContext,
-                        TlsAssistants.getUsualSafeTlsProtocols(),
-                        TlsAssistants.getUsualSafeTlsCipherSuites(),
-                        TlsAssistants.getSimpleHostnameVerifier()))
+        TlsSocketStrategy tss = new DefaultClientTlsStrategy(sslContext, TlsAssistants.getSimpleHostnameVerifier());
+        ConnectionConfig connectionConfig = ConnectionConfig.custom()
+                .setConnectTimeout(Timeout.ofSeconds(30))
+                .setSocketTimeout(Timeout.ofSeconds(30))
+                .build();
+        PoolingHttpClientConnectionManager connManager = PoolingHttpClientConnectionManagerBuilder.create()
+                .setTlsSocketStrategy(tss)
+                .setDefaultConnectionConfig(connectionConfig)
+                .setMaxConnTotal(200)
+                .setMaxConnPerRoute(20)
+                .build();
+        RequestConfig requestConfig = RequestConfig.custom()
+                .setResponseTimeout(Timeout.ofSeconds(30))
+                .build();
+        return HttpClients.custom()
+                .setConnectionManager(connManager)
+                .setDefaultRequestConfig(requestConfig)
                 .build();
     }
 }

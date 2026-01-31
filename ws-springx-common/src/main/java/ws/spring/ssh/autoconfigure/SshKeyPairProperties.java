@@ -5,16 +5,15 @@
 
 package ws.spring.ssh.autoconfigure;
 
-import org.springframework.lang.Nullable;
+import jakarta.validation.constraints.NotBlank;
+import org.jspecify.annotations.Nullable;
 import ws.spring.ssh.AbstractSshSource;
 import ws.spring.ssh.SshKeyPair;
 import ws.spring.util.SecurityUtils;
 
-import javax.validation.constraints.NotBlank;
-
 /**
  * @author WindShadow
- * @version 2024-03-28.
+ * @version 2024-03-28
  */
 public class SshKeyPairProperties extends SshSourceProperties {
 

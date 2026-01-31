@@ -12,7 +12,7 @@ import ws.spring.ssh.support.MinaSshService;
 
 /**
  * @author WindShadow
- * @version 2024-03-28.
+ * @version 2024-03-28
  */
 class MinaSshServiceFactory implements SshServiceFactory {
 

@@ -16,7 +16,7 @@ import ws.spring.testdemo.config.CustomConfigurationForScan;
 
 /**
  * @author WindShadow
- * @version 2025-06-23.
+ * @version 2025-06-23
  */
 @Import(CustomConfigurationForImport.class)
 public class ExactConfigurationTests extends SpringxAppTests {

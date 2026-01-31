@@ -13,7 +13,7 @@ import java.util.Map;
 
 /**
  * @author WindShadow
- * @version 2023-06-07.
+ * @version 2023-06-07
  */
 
 public abstract class MethodCachedDynamicMethodMatcherPointcut extends DynamicMethodMatcherPointcut {

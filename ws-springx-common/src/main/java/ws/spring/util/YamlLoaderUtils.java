@@ -5,12 +5,12 @@
 
 package ws.spring.util;
 
+import org.jspecify.annotations.NonNull;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.config.YamlMapFactoryBean;
 import org.springframework.beans.factory.config.YamlProcessor;
 import org.springframework.beans.factory.config.YamlPropertiesFactoryBean;
 import org.springframework.core.io.Resource;
-import org.springframework.lang.NonNull;
 import org.springframework.util.Assert;
 
 import java.util.Map;
@@ -19,7 +19,7 @@ import java.util.function.Supplier;
 
 /**
  * @author WindShadow
- * @version 2024-10-24.
+ * @version 2024-10-24
  */
 public class YamlLoaderUtils {
 

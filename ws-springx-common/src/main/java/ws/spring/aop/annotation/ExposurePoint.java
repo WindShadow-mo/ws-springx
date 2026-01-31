@@ -14,7 +14,7 @@ import java.lang.annotation.*;
  * 使{@linkplain ws.spring.aop.MethodPeeper 方法观测者}们有可能观测该方法的执行过程
  *
  * @author WindShadow
- * @version 2022-01-21.
+ * @version 2022-01-21
  * @see ws.spring.aop.MethodPeeper
  */
 

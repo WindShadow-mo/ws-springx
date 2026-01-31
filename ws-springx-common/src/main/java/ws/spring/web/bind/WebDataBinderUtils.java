@@ -14,7 +14,7 @@ import java.lang.annotation.Annotation;
 
 /**
  * @author WindShadow
- * @version 2024-11-02.
+ * @version 2024-11-02
  */
 public class WebDataBinderUtils {
 
@@ -26,7 +26,7 @@ public class WebDataBinderUtils {
             Validated validatedAnn = AnnotationUtils.getAnnotation(ann, Validated.class);
             if (validatedAnn != null || ann.annotationType().getSimpleName().startsWith("Valid")) {
                 Object hints = (validatedAnn != null ? validatedAnn.value() : AnnotationUtils.getValue(ann));
-                Object[] validationHints = (hints instanceof Object[] ? (Object[]) hints : new Object[] {hints});
+                Object[] validationHints = (hints instanceof Object[] ? (Object[]) hints : new Object[]{hints});
                 binder.validate(validationHints);
                 break;
             }

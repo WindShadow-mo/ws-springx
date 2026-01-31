@@ -9,7 +9,7 @@ import ws.spring.lang.enums.EnumValue;
 
 /**
  * @author WindShadow
- * @version 2022-11-13.
+ * @version 2022-11-13
  */
 
 public enum OperateSystem implements EnumValue<String> {

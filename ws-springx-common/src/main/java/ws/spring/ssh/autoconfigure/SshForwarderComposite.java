@@ -16,13 +16,12 @@ import java.util.Objects;
 
 /**
  * @author WindShadow
- * @version 2025-07-06.
+ * @version 2025-07-06
  */
 class SshForwarderComposite implements DisposableBean {
 
-    protected final Log log = LogFactory.getLog(getClass());
-
     private final List<SshForwarder> forwarders;
+    protected final Log log = LogFactory.getLog(getClass());
 
     SshForwarderComposite(List<SshForwarder> forwarders) {
         this.forwarders = Objects.requireNonNull(forwarders);

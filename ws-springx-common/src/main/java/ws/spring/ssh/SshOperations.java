@@ -17,7 +17,7 @@ import java.util.function.Consumer;
 
 /**
  * @author WindShadow
- * @version 2024-02-26.
+ * @version 2024-02-26
  */
 public interface SshOperations {
 

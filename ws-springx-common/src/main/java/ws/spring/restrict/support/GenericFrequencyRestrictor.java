@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @author WindShadow
- * @version 2024-10-15.
+ * @version 2024-10-15
  */
 public abstract class GenericFrequencyRestrictor extends AbstractFrequencyRestrictor {
 

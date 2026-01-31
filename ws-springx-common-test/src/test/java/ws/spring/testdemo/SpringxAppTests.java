@@ -11,7 +11,7 @@ import org.springframework.util.StopWatch;
 
 import java.util.concurrent.TimeUnit;
 
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 public class SpringxAppTests {
 
     public static void runInDuration(long duration, TimeUnit unit, Runnable runnable) {

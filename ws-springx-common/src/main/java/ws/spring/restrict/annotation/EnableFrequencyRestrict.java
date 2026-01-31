@@ -11,7 +11,7 @@ import java.lang.annotation.*;
 
 /**
  * @author WindShadow
- * @version 2024-01-26.
+ * @version 2024-01-26
  */
 
 @Target({ElementType.TYPE})

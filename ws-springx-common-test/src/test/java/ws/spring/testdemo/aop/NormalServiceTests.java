@@ -11,7 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.SpyBean;
+import org.springframework.test.context.bean.override.mockito.MockitoSpyBean;
 import ws.spring.aop.ReturnValuePeeper;
 import ws.spring.testdemo.SpringxAppTests;
 import ws.spring.testdemo.service.NormalService;
@@ -21,7 +21,7 @@ import java.util.function.Consumer;
 
 /**
  * @author WindShadow
- * @version 2022-01-22.
+ * @version 2022-01-22
  * @see NormalService
  */
 
@@ -31,7 +31,7 @@ public class NormalServiceTests extends SpringxAppTests {
     @Autowired
     private NormalService normalService;
 
-    @SpyBean
+    @MockitoSpyBean
     private NormalServiceAdvice normalServiceAdvice;
 
     private ReturnValuePeeper<?> returnValuePeeper;

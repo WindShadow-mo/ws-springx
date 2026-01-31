@@ -16,43 +16,13 @@ import java.util.*;
 
 /**
  * @author WindShadow
- * @version 2023-06-27.
+ * @version 2023-06-27
  */
 
 @Slf4j
 public class NodesTests {
 
     private static final Random RANDOM = new Random();
-
-    private static void appendChildren(WritableTreeNode<CustomEntity<String>> node, List<CustomEntity<String>> allEntities, int size, int deep) {
-
-        if (deep <= 0) return;
-        CustomEntity<String> parent = node.getIdentity();
-        for (int i = 0; i < size; i++) {
-
-            CustomEntity<String> e = new CustomEntity<>(parent.getV() + "-" + i, parent.getV());
-            allEntities.add(e);
-
-            WritableTreeNode<CustomEntity<String>> n = node.addChild(e);
-
-            appendChildren(n, allEntities, RANDOM.nextInt(size) + 1, deep - 1);
-        }
-    }
-
-    private static CustomEntityHolder<String> genEntities(String rootName, int size, int deep) {
-
-        List<CustomEntity<String>> allEntities = new ArrayList<>();
-        CustomEntity<String> root = new CustomEntity<>(rootName, null);
-        WritableTreeNode<CustomEntity<String>> rootNode = new DefaultTreeNode<>();
-        rootNode.setIdentity(root);
-        allEntities.add(root);
-        appendChildren(rootNode, allEntities, size, deep);
-
-        CustomEntityHolder<String> holder = new CustomEntityHolder<>();
-        holder.setAllEntities(allEntities);
-        holder.setOriginalNode(rootNode);
-        return holder;
-    }
 
     @Test
     void transTest() {
@@ -139,6 +109,36 @@ public class NodesTests {
         TreeNode<CustomEntity<String>> tree = Nodes.transToSingleTree(list);
         Map<String, CustomEntity<String>> entityMap = Nodes.collectToMap(tree, CustomEntity::fetchKey);
         list.forEach(e -> Assertions.assertSame(e, entityMap.get(e.fetchKey())));
+    }
+
+    private static void appendChildren(WritableTreeNode<CustomEntity<String>> node, List<CustomEntity<String>> allEntities, int size, int deep) {
+
+        if (deep <= 0) return;
+        CustomEntity<String> parent = node.getIdentity();
+        for (int i = 0; i < size; i++) {
+
+            CustomEntity<String> e = new CustomEntity<>(parent.getV() + "-" + i, parent.getV());
+            allEntities.add(e);
+
+            WritableTreeNode<CustomEntity<String>> n = node.addChild(e);
+
+            appendChildren(n, allEntities, RANDOM.nextInt(size) + 1, deep - 1);
+        }
+    }
+
+    private static CustomEntityHolder<String> genEntities(String rootName, int size, int deep) {
+
+        List<CustomEntity<String>> allEntities = new ArrayList<>();
+        CustomEntity<String> root = new CustomEntity<>(rootName, null);
+        WritableTreeNode<CustomEntity<String>> rootNode = new DefaultTreeNode<>();
+        rootNode.setIdentity(root);
+        allEntities.add(root);
+        appendChildren(rootNode, allEntities, size, deep);
+
+        CustomEntityHolder<String> holder = new CustomEntityHolder<>();
+        holder.setAllEntities(allEntities);
+        holder.setOriginalNode(rootNode);
+        return holder;
     }
 
     @ToString

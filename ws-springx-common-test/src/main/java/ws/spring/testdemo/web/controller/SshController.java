@@ -12,7 +12,7 @@ import ws.spring.web.rest.response.RestResponse;
 
 /**
  * @author WindShadow
- * @version 2024-03-26.
+ * @version 2024-03-26
  */
 
 @RestController

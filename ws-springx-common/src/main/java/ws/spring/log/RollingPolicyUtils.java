@@ -16,7 +16,7 @@ import java.util.Set;
 
 /**
  * @author WindShadow
- * @version 2022-11-16.
+ * @version 2022-11-16
  */
 
 class RollingPolicyUtils {

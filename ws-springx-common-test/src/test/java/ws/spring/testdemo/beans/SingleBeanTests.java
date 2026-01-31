@@ -5,6 +5,7 @@
 
 package ws.spring.testdemo.beans;
 
+import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -14,12 +15,11 @@ import ws.spring.beans.SingleBean;
 import ws.spring.testdemo.SpringxAppTests;
 import ws.spring.testdemo.pojo.Person;
 
-import javax.validation.ConstraintViolationException;
 import java.util.Collections;
 
 /**
  * @author WindShadow
- * @version 2024-10-21.
+ * @version 2024-10-21
  */
 @Slf4j
 public class SingleBeanTests extends SpringxAppTests {
@@ -50,7 +50,7 @@ public class SingleBeanTests extends SpringxAppTests {
         Assertions.assertDoesNotThrow(() -> sbs.consumePojoSingleBean(of(new Person("valid-email@ws.com"))));
     }
 
-    private static  <T> SingleBean<T> of(T obj) {
+    private static <T> SingleBean<T> of(T obj) {
         return new DefaultSingleBean<>(obj);
     }
 }

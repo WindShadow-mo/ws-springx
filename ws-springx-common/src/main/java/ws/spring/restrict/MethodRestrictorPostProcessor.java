@@ -17,7 +17,7 @@ import ws.spring.restrict.annotation.FrequencyRestrict;
 
 /**
  * @author WindShadow
- * @version 2024-01-26.
+ * @version 2024-01-26
  */
 
 public class MethodRestrictorPostProcessor extends AbstractBeanFactoryAwareAdvisingPostProcessor implements InitializingBean {

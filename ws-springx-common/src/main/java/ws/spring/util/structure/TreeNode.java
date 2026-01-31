@@ -5,7 +5,7 @@
 
 package ws.spring.util.structure;
 
-import org.springframework.lang.Nullable;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Comparator;
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.Optional;
 
 /**
  * @author WindShadow
- * @version 2023-05-04.
+ * @version 2023-05-04
  */
 
 public interface TreeNode<E> extends Node<E> {

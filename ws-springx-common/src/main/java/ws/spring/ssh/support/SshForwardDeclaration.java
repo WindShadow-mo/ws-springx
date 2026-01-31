@@ -9,7 +9,7 @@ import ws.spring.constant.NetworkConstants;
 
 /**
  * @author WindShadow
- * @version 2025-06-30.
+ * @version 2025-06-30
  */
 public class SshForwardDeclaration {
 

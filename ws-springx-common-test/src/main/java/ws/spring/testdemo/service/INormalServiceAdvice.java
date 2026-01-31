@@ -10,7 +10,7 @@ import ws.spring.aop.annotation.PeekPoint;
 
 /**
  * @author WindShadow
- * @version 2022-01-28.
+ * @version 2022-01-28
  */
 
 public interface INormalServiceAdvice {

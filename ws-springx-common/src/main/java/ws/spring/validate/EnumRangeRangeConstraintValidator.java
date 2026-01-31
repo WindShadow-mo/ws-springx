@@ -5,10 +5,10 @@
 
 package ws.spring.validate;
 
+import jakarta.validation.ConstraintDeclarationException;
+import jakarta.validation.ConstraintValidatorContext;
 import ws.spring.validate.annotation.EnumRange;
 
-import javax.validation.ConstraintDeclarationException;
-import javax.validation.ConstraintValidatorContext;
 import java.util.EnumSet;
 import java.util.Set;
 
@@ -16,7 +16,7 @@ import java.util.Set;
  * 枚举元素约束校验器
  *
  * @author WindShadow
- * @version 2021-12-16.
+ * @version 2021-12-16
  */
 
 @SuppressWarnings({"rawtypes"})

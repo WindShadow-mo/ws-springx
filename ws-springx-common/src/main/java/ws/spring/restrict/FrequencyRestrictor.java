@@ -5,11 +5,11 @@
 
 package ws.spring.restrict;
 
-import org.springframework.lang.NonNull;
+import org.jspecify.annotations.NonNull;
 
 /**
  * @author WindShadow
- * @version 2024-02-23.
+ * @version 2024-02-23
  */
 public interface FrequencyRestrictor {
 
@@ -25,6 +25,7 @@ public interface FrequencyRestrictor {
 
     /**
      * 重置对refer的限制记录
+     *
      * @param refer
      */
     void resetRestrict(@NonNull String refer);

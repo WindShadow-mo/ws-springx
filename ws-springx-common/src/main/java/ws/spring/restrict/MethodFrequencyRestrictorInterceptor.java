@@ -7,6 +7,7 @@ package ws.spring.restrict;
 
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
+import org.jspecify.annotations.Nullable;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.expression.BeanFactoryResolver;
 import org.springframework.context.expression.MethodBasedEvaluationContext;
@@ -16,7 +17,6 @@ import org.springframework.core.annotation.AnnotationAttributes;
 import org.springframework.expression.BeanResolver;
 import org.springframework.expression.Expression;
 import org.springframework.expression.ExpressionParser;
-import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
 import ws.spring.restrict.annotation.FrequencyRestrict;
 import ws.spring.restrict.support.DelegateFrequencyRestrictor;
@@ -27,7 +27,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author WindShadow
- * @version 2024-01-26.
+ * @version 2024-01-26
  */
 
 public class MethodFrequencyRestrictorInterceptor implements MethodInterceptor {

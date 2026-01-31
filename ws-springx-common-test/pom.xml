@@ -5,7 +5,7 @@
     <parent>
         <groupId>ws.spring</groupId>
         <artifactId>ws-springx-parent</artifactId>
-        <version>1.1.0-RELEASE</version>
+        <version>2.0.0-SNAPSHOT</version>
         <relativePath/>
     </parent>
     <artifactId>ws-springx-common-test</artifactId>
@@ -14,6 +14,8 @@
 
     <properties>
         <ws-springx-common.version>${project.version}</ws-springx-common.version>
+        <!-- mockito版本与SpringBoot管理的版本一致 -->
+        <mockito.version>5.20.0</mockito.version>
     </properties>
 
     <dependencies>
@@ -35,19 +37,14 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.mybatis-flex</groupId>
-            <artifactId>mybatis-flex-spring-boot-starter</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>test</scope>
         </dependency>
 
         <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
+            <groupId>org.apache.httpcomponents.client5</groupId>
+            <artifactId>httpclient5</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.sshd</groupId>
@@ -64,12 +61,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <dependency>
@@ -94,6 +85,41 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <mainClass>ws.spring.testdemo.SpringxApp</mainClass>
+                </configuration>
+            </plugin>
+            <!-- 用于下载单独的 Mockito JAR -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <!--    将Mockito JAR输出到agents，以便后续通过参数静态指定使用    -->
+                        <id>get-mockito-agent</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.mockito</groupId>
+                                    <artifactId>mockito-core</artifactId>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${project.build.directory}/agents</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <argLine>
+                        -javaagent:${project.build.directory}/agents/mockito-core-${mockito.version}.jar
+                    </argLine>
                 </configuration>
             </plugin>
         </plugins>

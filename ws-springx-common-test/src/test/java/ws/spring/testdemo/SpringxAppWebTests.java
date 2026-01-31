@@ -5,16 +5,20 @@
 
 package ws.spring.testdemo;
 
-import com.fasterxml.jackson.core.type.TypeReference;
+import jakarta.servlet.ServletContext;
 import org.junit.jupiter.api.Assertions;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
-import org.springframework.test.web.servlet.request.MockMultipartHttpServletRequestBuilder;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.util.Assert;
+import org.springframework.web.context.ServletContextAware;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+import tools.jackson.core.type.TypeReference;
 import ws.spring.testdemo.util.JacksonUtils;
 import ws.spring.testdemo.web.rest.GlobalRest;
 import ws.spring.web.rest.response.RestResponse;
@@ -25,14 +29,20 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 /**
  * @author WindShadow
- * @version 2023-06-06.
+ * @version 2023-06-06
  */
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
+public class SpringxAppWebTests implements ServletContextAware {
 
-@AutoConfigureMockMvc
-public class SpringxAppWebTests extends SpringxAppTests {
-
-    @Autowired
     protected MockMvc mvc;
+
+    @Override
+    public void setServletContext(ServletContext servletContext) {
+
+        WebApplicationContext wac = WebApplicationContextUtils.getWebApplicationContext(servletContext);
+        Assert.state(wac != null, "WebApplicationContext not found");
+        this.mvc = MockMvcBuilders.webAppContextSetup(wac).build();
+    }
 
     protected final <T> T request(RequestBuilder builder) {
 
@@ -42,7 +52,8 @@ public class SpringxAppWebTests extends SpringxAppTests {
     protected final <T> T request(RequestBuilder builder, ResultMatcher matcher) {
 
         String json = requestString(builder, matcher);
-        RestResponse<T> restResponse = JacksonUtils.parse(json, new TypeReference<RestResponse<T>>() {});
+        RestResponse<T> restResponse = JacksonUtils.parse(json, new TypeReference<RestResponse<T>>() {
+        });
         Assertions.assertEquals(GlobalRest.SUCCESS.getCode(), restResponse.getCode());
         return restResponse.getData();
     }

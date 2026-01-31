@@ -7,7 +7,7 @@ package ws.spring.aop.exception;
 
 /**
  * @author WindShadow
- * @version 2022-01-22.
+ * @version 2022-01-22
  */
 
 public class PeekMethodDeclarationException extends RuntimeException {

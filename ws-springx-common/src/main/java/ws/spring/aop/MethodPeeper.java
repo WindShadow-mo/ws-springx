@@ -5,7 +5,7 @@
 
 package ws.spring.aop;
 
-import org.springframework.lang.Nullable;
+import org.jspecify.annotations.Nullable;
 import ws.spring.aop.annotation.ExposurePoint;
 
 import java.lang.reflect.Method;
@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
  * 实现此接口用于观测{@linkplain ExposurePoint 暴露点}方法执行过程
  *
  * @author WindShadow
- * @version 2022-01-21.
+ * @version 2022-01-21
  * @see ExposurePoint
  * @see ReturnValuePeeper
  */

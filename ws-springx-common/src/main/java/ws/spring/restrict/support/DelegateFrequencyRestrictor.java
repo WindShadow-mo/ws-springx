@@ -11,7 +11,7 @@ import java.util.Objects;
 
 /**
  * @author WindShadow
- * @version 2024-02-24.
+ * @version 2024-02-24
  */
 public class DelegateFrequencyRestrictor implements FrequencyRestrictor {
 

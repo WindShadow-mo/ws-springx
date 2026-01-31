@@ -5,13 +5,13 @@
 
 package ws.spring.aop;
 
-import org.springframework.lang.Nullable;
+import org.jspecify.annotations.Nullable;
 
 /**
  * 返回值观测者，实现此接口用于观测{@linkplain ws.spring.aop.annotation.ExposurePoint 暴露点}方法的返回值
  *
  * @author WindShadow
- * @version 2022-01-23.
+ * @version 2022-01-23
  * @see ws.spring.aop.annotation.ExposurePoint
  * @see MethodPeeper
  */

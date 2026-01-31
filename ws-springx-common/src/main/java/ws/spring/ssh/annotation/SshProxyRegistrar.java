@@ -19,7 +19,7 @@ import java.util.stream.Stream;
 
 /**
  * @author WindShadow
- * @version 2025-06-30.
+ * @version 2025-06-30
  */
 class SshProxyRegistrar implements ImportBeanDefinitionRegistrar {
 

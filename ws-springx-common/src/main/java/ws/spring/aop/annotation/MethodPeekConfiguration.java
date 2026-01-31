@@ -21,13 +21,14 @@ import ws.spring.context.annotation.ExactConfiguration;
 
 /**
  * @author WindShadow
- * @version 2022-01-21.
+ * @version 2022-01-21
  */
 
 @ExactConfiguration
 class MethodPeekConfiguration {
 
     @Bean
+    @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
     @ConditionalOnMissingBean(GlobalMethodPeekHandler.class)
     public static AbortGlobalMethodPeekHandler globalLogAdvice() {
 

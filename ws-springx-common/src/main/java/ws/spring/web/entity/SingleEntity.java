@@ -5,12 +5,12 @@
 
 package ws.spring.web.entity;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import tools.jackson.databind.annotation.JsonDeserialize;
 import ws.spring.beans.SingleBean;
 
 /**
  * @author WindShadow
- * @version 2025-05-30.
+ * @version 2025-05-30
  */
 
 @JsonDeserialize(as = JacksonSingleEntity.class)

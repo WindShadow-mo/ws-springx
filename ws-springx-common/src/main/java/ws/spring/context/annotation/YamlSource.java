@@ -15,7 +15,7 @@ import java.lang.annotation.*;
  * 可通过该注解引入一个yaml配置文件，通常在配置类上使用
  *
  * @author WindShadow
- * @version 2024-10-24.
+ * @version 2024-10-24
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)

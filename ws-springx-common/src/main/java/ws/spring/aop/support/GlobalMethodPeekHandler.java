@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
 
 /**
  * @author WindShadow
- * @version 2022-01-23.
+ * @version 2022-01-23
  */
 
 public interface GlobalMethodPeekHandler {

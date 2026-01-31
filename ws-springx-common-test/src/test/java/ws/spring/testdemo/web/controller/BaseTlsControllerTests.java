@@ -5,34 +5,29 @@
 
 package ws.spring.testdemo.web.controller;
 
+import org.jspecify.annotations.Nullable;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.boot.web.server.Ssl;
+import org.springframework.boot.web.server.autoconfigure.ServerProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
-import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.client.RestClient;
 import ws.spring.testdemo.SpringxAppWebTests;
-import ws.spring.testdemo.anno.EnableWebClientRest;
 import ws.spring.testdemo.util.HttpClientAssistants;
 
 /**
  * @author WindShadow
- * @version 2022-10-02.
+ * @version 2022-10-02
  */
-@EnableWebClientRest
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public abstract class BaseTlsControllerTests extends SpringxAppWebTests {
-
-    @Autowired
-    private RestTemplate rest;
 
     @Autowired
     private ServerProperties serverProperties;
@@ -55,26 +50,34 @@ public abstract class BaseTlsControllerTests extends SpringxAppWebTests {
     @Test
     void baseTlsTest() {
 
-        rest.setRequestFactory(buildHttpRequestFactory(ssl));
+        RestClient rest = RestClient.builder()
+                .requestFactory(buildHttpRequestFactory(ssl))
+                .build();
         doHttpTest(tls, true, rest);
     }
 
     @Test
     void customTlsTest() {
-        doTlsTest(tls, need, ssl, rest);
+        doTlsTest(tls, need, ssl, RestClient.builder());
     }
 
-    protected abstract void doTlsTest(boolean tls, boolean need, Ssl ssl, RestTemplate rest);
+    protected abstract void doTlsTest(boolean tls, boolean need, Ssl ssl, RestClient.Builder builder);
 
-    public void doHttpTest(boolean tls, boolean success, RestTemplate rest) {
+    public void doHttpTest(boolean tls, boolean success, RestClient rest) {
 
         String url = (tls ? "https" : "http") + "://127.0.0.1:" + localServerPort + "/ssl";
         if (success) {
 
-            ResponseEntity<String> entity = rest.getForEntity(url, String.class);
+            ResponseEntity<String> entity = rest.get()
+                    .uri(url)
+                    .retrieve()
+                    .toEntity(String.class);
             Assertions.assertSame(HttpStatus.OK, entity.getStatusCode());
         } else {
-            Assertions.assertThrows(Exception.class, () -> rest.getForEntity(url, String.class));
+            Assertions.assertThrows(Exception.class, () -> rest.get()
+                    .uri(url)
+                    .retrieve()
+                    .toEntity(String.class));
         }
     }
 

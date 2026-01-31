@@ -11,7 +11,7 @@ import ws.spring.text.annotation.SqlEscape;
 
 /**
  * @author WindShadow
- * @version 2023-06-08.
+ * @version 2023-06-08
  */
 
 @Slf4j

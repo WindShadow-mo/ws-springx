@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 /**
  * @author WindShadow
- * @version 2023-05-04.
+ * @version 2023-05-04
  */
 
 public class Nodes {

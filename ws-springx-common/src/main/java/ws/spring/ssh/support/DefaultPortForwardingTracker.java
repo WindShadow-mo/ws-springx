@@ -11,7 +11,7 @@ import java.util.function.Predicate;
 
 /**
  * @author WindShadow
- * @version 2024-03-26.
+ * @version 2024-03-26
  */
 public class DefaultPortForwardingTracker<T extends AutoCloseable> implements PortForwardingTracker {
 

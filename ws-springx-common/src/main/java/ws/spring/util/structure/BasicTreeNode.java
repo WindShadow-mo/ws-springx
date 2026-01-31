@@ -5,13 +5,15 @@
 
 package ws.spring.util.structure;
 
-import org.springframework.lang.Nullable;
+import org.jspecify.annotations.Nullable;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * @author WindShadow
- * @version 2023-05-04.
+ * @version 2023-05-04
  */
 
 public abstract class BasicTreeNode<E> implements WritableTreeNode<E> {

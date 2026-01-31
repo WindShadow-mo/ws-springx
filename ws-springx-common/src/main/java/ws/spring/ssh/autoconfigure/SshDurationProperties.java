@@ -11,7 +11,7 @@ import java.time.Duration;
 
 /**
  * @author WindShadow
- * @version 2024-03-02.
+ * @version 2024-03-02
  */
 public class SshDurationProperties implements SshDuration {
 
@@ -35,13 +35,13 @@ public class SshDurationProperties implements SshDuration {
         return heartbeatTimeout;
     }
 
+    public void setHeartbeatTimeout(Duration heartbeatTimeout) {
+        this.heartbeatTimeout = heartbeatTimeout;
+    }
+
     @Override
     public Duration getChannelTimeout() {
         return channelTimeout;
-    }
-
-    public void setHeartbeatTimeout(Duration heartbeatTimeout) {
-        this.heartbeatTimeout = heartbeatTimeout;
     }
 
     public void setChannelTimeout(Duration channelTimeout) {

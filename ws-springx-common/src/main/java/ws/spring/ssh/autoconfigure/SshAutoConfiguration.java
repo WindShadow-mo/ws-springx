@@ -22,7 +22,7 @@ import java.util.Map;
 
 /**
  * @author WindShadow
- * @version 2024-02-26.
+ * @version 2024-02-26
  */
 @AutoConfiguration
 @ConditionalOnSsh

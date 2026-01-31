@@ -15,7 +15,7 @@ import java.util.function.Consumer;
 
 /**
  * @author WindShadow
- * @version 2025-07-17.
+ * @version 2025-07-17
  */
 @Component
 public class TestHook {

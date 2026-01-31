@@ -5,8 +5,8 @@
 
 package ws.spring.util.lambda;
 
+import org.jspecify.annotations.Nullable;
 import org.springframework.beans.BeanUtils;
-import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
 import org.springframework.util.ClassUtils;
 import org.springframework.util.ConcurrentReferenceHashMap;
@@ -24,7 +24,7 @@ import java.util.Optional;
 
 /**
  * @author WindShadow
- * @version 2024-08-08.
+ * @version 2024-08-08
  */
 public class Lambdas {
 

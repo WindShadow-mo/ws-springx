@@ -5,6 +5,7 @@
 
 package ws.spring.testdemo.web.http;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,7 +13,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.env.RandomValuePropertySource;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
@@ -29,14 +30,13 @@ import ws.spring.testdemo.assistant.TestHook;
 import ws.spring.testdemo.web.controller.HttpProxyController;
 import ws.spring.web.http.RestProxy;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Random;
 
 /**
  * @author WindShadow
- * @version 2025-07-17.
+ * @version 2025-07-17
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class RestProxyTests extends SpringxAppWebTests {
@@ -45,15 +45,12 @@ public class RestProxyTests extends SpringxAppWebTests {
 
     private final RandomValuePropertySource source = new RandomValuePropertySource();
     private final Random random = new Random();
-
+    private final String hookFacade = "Facade";
+    private final String hookReal = "Real";
     @LocalServerPort
     private int localServerPort;
     @Autowired
     private TestHook hook;
-
-    private final String hookFacade = "Facade";
-    private final String hookReal = "Real";
-
     private String origin;
 
     private HttpMethod method = null;

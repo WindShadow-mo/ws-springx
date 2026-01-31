@@ -12,9 +12,9 @@ import org.bouncycastle.openssl.PEMKeyPair;
 import org.bouncycastle.openssl.PEMParser;
 import org.bouncycastle.openssl.jcajce.JcaPEMKeyConverter;
 import org.bouncycastle.openssl.jcajce.JcePEMDecryptorProviderBuilder;
+import org.jspecify.annotations.Nullable;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
-import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
 import org.springframework.util.ResourceUtils;
 
@@ -35,7 +35,7 @@ import java.util.function.Supplier;
 
 /**
  * @author WindShadow
- * @version 2024-03-30.
+ * @version 2024-03-30
  */
 public class SecurityUtils {
 
@@ -66,19 +66,19 @@ public class SecurityUtils {
         }
     }
 
-    public static PublicKey readPublicKey(String location, @Nullable char[] password) throws IOException {
+    public static PublicKey readPublicKey(String location, char @Nullable [] password) throws IOException {
         return readPublicKey(ResourceUtils.getURL(location), password);
     }
 
-    public static PublicKey readPublicKey(URL url, @Nullable char[] password) throws IOException {
+    public static PublicKey readPublicKey(URL url, char @Nullable [] password) throws IOException {
         return readPublicKey(new UrlResource(url), password);
     }
 
-    public static PublicKey readPublicKey(Resource resource, @Nullable char[] password) throws IOException {
+    public static PublicKey readPublicKey(Resource resource, char @Nullable [] password) throws IOException {
         return readPublicKey(resource.getInputStream(), password);
     }
 
-    public static PublicKey readPublicKey(InputStream in, @Nullable char[] password) throws IOException {
+    public static PublicKey readPublicKey(InputStream in, char @Nullable [] password) throws IOException {
 
         // 通常此处不会抛出IllegalArgumentException异常
         return Optional.of(readKeyPair(in, password))
@@ -86,19 +86,19 @@ public class SecurityUtils {
                 .orElseThrow(() -> new IllegalArgumentException("Not found a PublicKey"));
     }
 
-    public static PrivateKey readPrivateKey(String location, @Nullable char[] password) throws IOException {
+    public static PrivateKey readPrivateKey(String location, char @Nullable [] password) throws IOException {
         return readPrivateKey(ResourceUtils.getURL(location), password);
     }
 
-    public static PrivateKey readPrivateKey(URL url, @Nullable char[] password) throws IOException {
+    public static PrivateKey readPrivateKey(URL url, char @Nullable [] password) throws IOException {
         return readPrivateKey(new UrlResource(url), password);
     }
 
-    public static PrivateKey readPrivateKey(Resource resource, @Nullable char[] password) throws IOException {
+    public static PrivateKey readPrivateKey(Resource resource, char @Nullable [] password) throws IOException {
         return readPrivateKey(resource.getInputStream(), password);
     }
 
-    public static PrivateKey readPrivateKey(InputStream in, @Nullable char[] password) throws IOException {
+    public static PrivateKey readPrivateKey(InputStream in, char @Nullable [] password) throws IOException {
 
         // 通常此处不会抛出IllegalArgumentException异常
         return Optional.of(readKeyPair(in, password))
@@ -106,28 +106,28 @@ public class SecurityUtils {
                 .orElseThrow(() -> new IllegalArgumentException("Not found a PrivateKey"));
     }
 
-    public static KeyPair readKeyPair(String location, @Nullable char[] password) throws IOException {
+    public static KeyPair readKeyPair(String location, char @Nullable [] password) throws IOException {
 
         return readKeyPair(ResourceUtils.getURL(location), password);
     }
 
-    public static KeyPair readKeyPair(URL url, @Nullable char[] password) throws IOException {
+    public static KeyPair readKeyPair(URL url, char @Nullable [] password) throws IOException {
         return readKeyPair(new UrlResource(url), password);
     }
 
-    public static KeyPair readKeyPair(Resource resource, @Nullable char[] password) throws IOException {
+    public static KeyPair readKeyPair(Resource resource, char @Nullable [] password) throws IOException {
 
         return readKeyPair(resource.getInputStream(), password);
     }
 
-    public static KeyPair readKeyPair(InputStream in, @Nullable char[] password) throws IOException {
+    public static KeyPair readKeyPair(InputStream in, char @Nullable [] password) throws IOException {
 
         PEMKeyPair pemKeyPair = parsePEMKeyPair(in, password);
         JcaPEMKeyConverter converter = new JcaPEMKeyConverter();
         return converter.getKeyPair(pemKeyPair);
     }
 
-    private static PEMKeyPair parsePEMKeyPair(InputStream in, @Nullable char[] password) throws IOException {
+    private static PEMKeyPair parsePEMKeyPair(InputStream in, char @Nullable [] password) throws IOException {
 
         PEMKeyPair pemKeyPair;
         try (PEMParser pemParser = new PEMParser(new InputStreamReader(in))) {

@@ -12,7 +12,7 @@ import ws.spring.aop.annotation.ExposurePoint;
 
 /**
  * @author WindShadow
- * @version 2022-01-22.
+ * @version 2022-01-22
  */
 
 @Slf4j

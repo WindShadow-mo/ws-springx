@@ -5,23 +5,22 @@
 
 package ws.spring.validate.annotation;
 
+import jakarta.validation.Constraint;
+import jakarta.validation.Payload;
+import jakarta.validation.ReportAsSingleViolation;
+import jakarta.validation.constraints.Pattern;
 import ws.spring.constant.RegexpConstants;
 
-import javax.validation.Constraint;
-import javax.validation.Payload;
-import javax.validation.ReportAsSingleViolation;
-import javax.validation.constraints.Pattern;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 import static java.lang.annotation.ElementType.*;
-import static java.lang.annotation.ElementType.TYPE_USE;
 
 /**
  * @author WindShadow
- * @version 2022-09-18.
+ * @version 2022-09-18
  */
 
 @Documented

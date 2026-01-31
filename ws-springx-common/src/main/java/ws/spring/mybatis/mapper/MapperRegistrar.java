@@ -18,7 +18,7 @@ import java.util.Optional;
 
 /**
  * @author WindShadow
- * @version 2025-03-30.
+ * @version 2025-03-30
  */
 class MapperRegistrar implements ImportBeanDefinitionRegistrar {
 
@@ -55,6 +55,7 @@ class MapperRegistrar implements ImportBeanDefinitionRegistrar {
         } else {
             builder.addPropertyReference("sqlSessionFactory", sqlSessionFactoryRef);
         }
+        builder.setLazyInit(false);
         registry.registerBeanDefinition(beanName, builder.getBeanDefinition());
     }
 

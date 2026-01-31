@@ -6,9 +6,9 @@
 package ws.spring.net;
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.http.ssl.SSLContextBuilder;
-import org.apache.http.ssl.TrustStrategy;
-import org.springframework.lang.NonNull;
+import org.apache.hc.core5.ssl.SSLContextBuilder;
+import org.apache.hc.core5.ssl.TrustStrategy;
+import org.jspecify.annotations.NonNull;
 import org.springframework.util.Assert;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.ResourceUtils;
@@ -39,7 +39,7 @@ import java.util.function.Consumer;
  * </p>
  *
  * @author WindShadow
- * @version 2022-08-27.
+ * @version 2022-08-27
  * @see SSLContext
  */
 
@@ -146,7 +146,8 @@ public class TlsAssistants {
         Assert.notNull(keyPassword, "The keyPassword is invalid");
         try {
             builder.loadKeyMaterial(ResourceUtils.getURL(keyStoreResource), keyStorePassword, keyPassword);
-        } catch (NoSuchAlgorithmException | KeyStoreException | CertificateException | UnrecoverableKeyException | IOException e) {
+        } catch (NoSuchAlgorithmException | KeyStoreException | CertificateException | UnrecoverableKeyException |
+                 IOException e) {
             throw new IllegalStateException(e);
         }
     }
@@ -184,7 +185,7 @@ public class TlsAssistants {
         return (s, sslSession) -> {
 
             try {
-                return !ObjectUtils.isEmpty(sslSession.getPeerCertificateChain());
+                return !ObjectUtils.isEmpty(sslSession.getPeerCertificates());
             } catch (SSLPeerUnverifiedException e) {
                 if (log.isDebugEnabled()) {
                     log.debug(e.getMessage(), e);

@@ -5,14 +5,14 @@
 
 package ws.spring.lang.enums;
 
-import org.springframework.lang.NonNull;
+import org.jspecify.annotations.NonNull;
 
 /**
  * 枚举类型实现此接口提供一个value值反映枚举本身，
  * 你可以通过{@linkplain EnumValues}来操作实现了该接口的枚举
  *
  * @author WindShadow
- * @version 2022-02-19.
+ * @version 2022-02-19
  * @see EnumValues
  */
 

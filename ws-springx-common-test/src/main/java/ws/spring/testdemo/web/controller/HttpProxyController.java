@@ -5,6 +5,7 @@
 
 package ws.spring.testdemo.web.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
@@ -17,13 +18,12 @@ import ws.spring.testdemo.web.rest.GlobalRest;
 import ws.spring.web.http.RestProxy;
 import ws.spring.web.rest.response.RestResponse;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 /**
  * @author WindShadow
- * @version 2025-07-17.
+ * @version 2025-07-17
  */
 
 @RestController

@@ -14,7 +14,7 @@ import java.lang.annotation.*;
  * 声明式频控注解，用于控制方法的调用频率。超过调用频率将以{@linkplain RestrictedCriticalException 临界异常}通知
  *
  * @author WindShadow
- * @version 2023-10-18.
+ * @version 2023-10-18
  * @see ws.spring.restrict.FrequencyRestrictor
  * @see ws.spring.restrict.FrequencyRestrictService
  */

@@ -18,7 +18,7 @@ import java.util.function.Consumer;
 
 /**
  * @author WindShadow
- * @version 2024-10-12.
+ * @version 2024-10-12
  */
 @Slf4j
 public class LambdaMethodSignatureTests {
@@ -127,19 +127,19 @@ public class LambdaMethodSignatureTests {
         Assertions.assertEquals(invokeToSignature(result), methodSignature);
 
         Exception e;
-        e = Assertions.assertThrows(IllegalMethodSignatureException.class , () -> ReflectionTestUtils.invokeMethod(MAIN_CLASS, method, "(V)V"));
+        e = Assertions.assertThrows(IllegalMethodSignatureException.class, () -> ReflectionTestUtils.invokeMethod(MAIN_CLASS, method, "(V)V"));
         log.info("IllegalMethodSignature: {}", e.getMessage());
 
-        e = Assertions.assertThrows(IllegalMethodSignatureException.class , () -> ReflectionTestUtils.invokeMethod(MAIN_CLASS, method, "(Ljava/lang/Integer)Ljava/lang/Integer;"));
+        e = Assertions.assertThrows(IllegalMethodSignatureException.class, () -> ReflectionTestUtils.invokeMethod(MAIN_CLASS, method, "(Ljava/lang/Integer)Ljava/lang/Integer;"));
         log.info("IllegalMethodSignature: {}", e.getMessage());
 
-        e = Assertions.assertThrows(IllegalMethodSignatureException.class , () -> ReflectionTestUtils.invokeMethod(MAIN_CLASS, method, "(L;)Ljava/lang/Integer;"));
+        e = Assertions.assertThrows(IllegalMethodSignatureException.class, () -> ReflectionTestUtils.invokeMethod(MAIN_CLASS, method, "(L;)Ljava/lang/Integer;"));
         log.info("IllegalMethodSignature: {}", e.getMessage());
 
-        e = Assertions.assertThrows(IllegalMethodSignatureException.class , () -> ReflectionTestUtils.invokeMethod(MAIN_CLASS, method, "()V;"));
+        e = Assertions.assertThrows(IllegalMethodSignatureException.class, () -> ReflectionTestUtils.invokeMethod(MAIN_CLASS, method, "()V;"));
         log.info("IllegalMethodSignature: {}", e.getMessage());
 
-        e = Assertions.assertThrows(IllegalMethodSignatureException.class , () -> ReflectionTestUtils.invokeMethod(MAIN_CLASS, method, "()"));
+        e = Assertions.assertThrows(IllegalMethodSignatureException.class, () -> ReflectionTestUtils.invokeMethod(MAIN_CLASS, method, "()"));
         log.info("IllegalMethodSignature: {}", e.getMessage());
     }
 

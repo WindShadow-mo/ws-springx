@@ -5,20 +5,20 @@
 
 package ws.spring.testdemo.support.redis;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
+import org.jspecify.annotations.Nullable;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.lang.Nullable;
 import org.springframework.validation.annotation.Validated;
 import redis.embedded.util.Architecture;
 
-import javax.validation.Valid;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
 import java.net.InetSocketAddress;
 
 /**
  * @author WindShadow
- * @version 2024-10-23.
+ * @version 2024-10-23
  */
 @Data
 @Validated

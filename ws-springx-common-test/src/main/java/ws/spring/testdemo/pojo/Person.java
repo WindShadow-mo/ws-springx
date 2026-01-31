@@ -5,17 +5,16 @@
 
 package ws.spring.testdemo.pojo;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-
 /**
  * @author WindShadow
- * @version 2023-07-21.
+ * @version 2023-07-21
  */
 
 @AllArgsConstructor

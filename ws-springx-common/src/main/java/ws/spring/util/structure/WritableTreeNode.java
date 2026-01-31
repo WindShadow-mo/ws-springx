@@ -5,13 +5,13 @@
 
 package ws.spring.util.structure;
 
-import org.springframework.lang.Nullable;
+import org.jspecify.annotations.Nullable;
 
 import java.util.List;
 
 /**
  * @author WindShadow
- * @version 2023-06-20.
+ * @version 2023-06-20
  */
 
 public interface WritableTreeNode<E> extends TreeNode<E> {

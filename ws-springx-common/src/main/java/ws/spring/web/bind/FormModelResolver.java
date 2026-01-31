@@ -5,6 +5,7 @@
 
 package ws.spring.web.bind;
 
+import jakarta.servlet.ServletRequest;
 import org.springframework.beans.BeanInstantiationException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.core.MethodParameter;
@@ -20,7 +21,6 @@ import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
 import ws.spring.web.bind.annotation.FormModel;
 
-import javax.servlet.ServletRequest;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;

@@ -10,7 +10,7 @@ import ws.spring.ssh.SshOperations;
 
 /**
  * @author WindShadow
- * @version 2025-07-06.
+ * @version 2025-07-06
  */
 public class SshForwarderBean extends SshForwarder implements DisposableBean {
 

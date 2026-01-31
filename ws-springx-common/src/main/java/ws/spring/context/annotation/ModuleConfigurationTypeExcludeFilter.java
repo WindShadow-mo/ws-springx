@@ -14,7 +14,7 @@ import java.io.IOException;
 
 /**
  * @author WindShadow
- * @version 2025-06-23.
+ * @version 2025-06-23
  */
 class ModuleConfigurationTypeExcludeFilter extends TypeExcludeFilter {
 

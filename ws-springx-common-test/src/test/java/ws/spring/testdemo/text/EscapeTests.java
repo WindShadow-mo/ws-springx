@@ -14,7 +14,7 @@ import ws.spring.text.SqlEscaper;
 
 /**
  * @author WindShadow
- * @version 2023-06-07.
+ * @version 2023-06-07
  */
 @Slf4j
 public class EscapeTests extends SpringxAppTests {

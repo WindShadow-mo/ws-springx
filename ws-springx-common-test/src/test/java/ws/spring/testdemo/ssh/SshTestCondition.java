@@ -16,7 +16,7 @@ import java.util.Set;
 
 /**
  * @author WindShadow
- * @version 2024-10-05.
+ * @version 2024-10-05
  */
 public class SshTestCondition {
 
@@ -30,9 +30,9 @@ public class SshTestCondition {
         for (String name : SSH_USE) {
 
             Optional.ofNullable(properties.getProperty(String.format("spring.ext.ssh.accounts.-[%s].host", name)))
-                            .ifPresent(ADDRESSES::add);
+                    .ifPresent(ADDRESSES::add);
             Optional.ofNullable(properties.getProperty(String.format("spring.ext.ssh.key-pairs.-[%s].host", name)))
-                            .ifPresent(ADDRESSES::add);
+                    .ifPresent(ADDRESSES::add);
         }
     }
 

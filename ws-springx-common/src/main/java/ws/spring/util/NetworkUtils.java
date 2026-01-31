@@ -11,7 +11,7 @@ import java.util.Objects;
 
 /**
  * @author WindShadow
- * @version 2024-09-29.
+ * @version 2024-09-29
  */
 public class NetworkUtils {
 

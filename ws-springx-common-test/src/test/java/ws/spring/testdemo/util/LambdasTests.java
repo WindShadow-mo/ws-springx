@@ -22,7 +22,7 @@ import java.util.Objects;
 
 /**
  * @author WindShadow
- * @version 2024-08-06.
+ * @version 2024-08-06
  */
 @Slf4j
 public class LambdasTests {

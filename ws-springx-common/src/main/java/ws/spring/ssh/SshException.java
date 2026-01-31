@@ -9,7 +9,7 @@ import java.util.Objects;
 
 /**
  * @author WindShadow
- * @version 2024-03-01.
+ * @version 2024-03-01
  */
 
 public abstract class SshException extends RuntimeException {

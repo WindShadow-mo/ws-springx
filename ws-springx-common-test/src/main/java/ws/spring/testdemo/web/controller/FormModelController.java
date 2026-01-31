@@ -19,7 +19,7 @@ import java.util.Optional;
 
 /**
  * @author WindShadow
- * @version 2023-06-01.
+ * @version @version 2023-06-01
  */
 
 @RestController

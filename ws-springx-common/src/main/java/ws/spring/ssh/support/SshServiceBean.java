@@ -22,7 +22,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
 
 /**
  * @author WindShadow
- * @version 2024-03-03.
+ * @version 2024-03-03
  */
 public class SshServiceBean extends DelegateSshService implements ApplicationContextAware, InitializingBean, DisposableBean {
 

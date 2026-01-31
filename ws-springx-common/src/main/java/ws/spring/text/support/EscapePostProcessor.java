@@ -19,7 +19,7 @@ import java.util.stream.Stream;
 
 /**
  * @author WindShadow
- * @version 2023-05-01.
+ * @version 2023-05-01
  */
 
 public class EscapePostProcessor extends AbstractBeanFactoryAwareAdvisingPostProcessor implements InitializingBean {

@@ -18,17 +18,14 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * @author WindShadow
- * @version 2025-06-30.
+ * @version 2025-06-30
  */
 public class SshForwarder {
 
-    protected final Log log = LogFactory.getLog(getClass());
-
     private final String name;
-
     private final SshOperations operations;
-
     private final List<PortForwardingTracker> trackers = new CopyOnWriteArrayList<>();
+    protected final Log log = LogFactory.getLog(getClass());
 
     public SshForwarder(String name, SshOperations operations) {
         this.name = Objects.requireNonNull(name);

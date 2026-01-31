@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * @author WindShadow
- * @version 2023-06-19.
+ * @version 2023-06-19
  */
 
 public class DefaultTreeNode<E> extends BasicTreeNode<E> {

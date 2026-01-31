@@ -18,7 +18,7 @@ import java.util.Properties;
 
 /**
  * @author WindShadow
- * @version 2024-10-24.
+ * @version 2024-10-24
  */
 public class YamlPropertySourceFactory implements PropertySourceFactory {
 

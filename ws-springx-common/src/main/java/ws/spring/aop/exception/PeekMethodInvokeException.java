@@ -7,7 +7,7 @@ package ws.spring.aop.exception;
 
 /**
  * @author WindShadow
- * @version 2022-02-10.
+ * @version 2022-02-10
  */
 
 public class PeekMethodInvokeException extends RuntimeException {

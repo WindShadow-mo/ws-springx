@@ -11,7 +11,7 @@ import ws.spring.restrict.annotation.FrequencyRestrict;
 
 /**
  * @author WindShadow
- * @version 2024-02-24.
+ * @version 2024-02-24
  */
 
 @Slf4j

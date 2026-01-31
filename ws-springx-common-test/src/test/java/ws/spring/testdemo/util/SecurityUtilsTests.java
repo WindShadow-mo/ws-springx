@@ -20,7 +20,7 @@ import java.security.PublicKey;
 
 /**
  * @author WindShadow
- * @version 2024-03-30.
+ * @version 2024-03-30
  * @see SecurityUtils
  */
 public class SecurityUtilsTests {
@@ -32,7 +32,7 @@ public class SecurityUtilsTests {
     void before() throws Exception {
 
         UrlResource resource = new UrlResource(ResourceUtils.getURL("classpath:key/password.txt"));
-        password = StreamUtils.copyToString(resource.getInputStream() , StandardCharsets.UTF_8).toCharArray();
+        password = StreamUtils.copyToString(resource.getInputStream(), StandardCharsets.UTF_8).toCharArray();
     }
 
     @Test
