@@ -64,8 +64,8 @@ public class SimpleEntityTests extends SpringxAppTests {
         }));
         log.info("{}", e.getMessage());
 
-        SingleEntity<String> entity = SingleEntity.of("KEY", "VALUE");
-        String newKey = "key";
+        SingleEntity<String> entity = SingleEntity.of(randomKey(), randomValue());
+        String newKey = entity.getKey() + randomKey();
         Assertions.assertDoesNotThrow(() -> entity.replaceKey(newKey));
         Assertions.assertEquals(newKey, entity.getKey());
         e = Assertions.assertThrows(RuntimeException.class, () -> entity.replaceKey(null));
@@ -73,8 +73,10 @@ public class SimpleEntityTests extends SpringxAppTests {
         e = Assertions.assertThrows(RuntimeException.class, () -> entity.replaceKey(""));
         log.info("{}", e.getMessage());
 
-        String newValue = "value";
-        entity.replaceValue(newValue);
+        String oldValue = entity.getValue();
+        String newValue = oldValue + randomValue();
+        String replaceValue = entity.replaceValue(newValue);
+        Assertions.assertEquals(replaceValue, oldValue);
         Assertions.assertEquals(newValue, entity.getValue());
     }
 }

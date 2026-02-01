@@ -5,34 +5,23 @@
 
 package ws.spring.web.entity;
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.jspecify.annotations.Nullable;
+import tools.jackson.databind.annotation.JsonSerialize;
 
-import java.util.Collections;
-import java.util.Map;
+/**
+ * @author WindShadow
+ * @version 2026-02-01
+ */
+@JsonSerialize(using = SingleEntitySerializer.class)
+final class JacksonSingleEntity<T> implements SingleEntity<T> {
 
-
-class JacksonSingleEntity<T> implements SingleEntity<T> {
-
-    @JsonIgnore
     private String key;
 
-    @JsonIgnore
+    @Nullable
     private T value;
 
-    @JsonAnyGetter
-    public Map<String, T> fetchJsonMap() {
-
-        if (key == null) throw new IllegalStateException("No set key of SingleEntity");
-        return Collections.singletonMap(key, value);
-    }
-
-    @JsonAnySetter
-    public void putJsonValue(String key, T value) {
-
-        if (this.key != null) throw new IllegalArgumentException("SingleEntity only supports one key");
-        replaceKey(key);
+    JacksonSingleEntity(String key, @Nullable T value) {
+        this.key = key;
         this.value = value;
     }
 
@@ -52,7 +41,7 @@ class JacksonSingleEntity<T> implements SingleEntity<T> {
     }
 
     @Override
-    public T replaceValue(T value) {
+    public T replaceValue(@Nullable T value) {
 
         T oldValue = this.value;
         this.value = value;
@@ -60,12 +49,12 @@ class JacksonSingleEntity<T> implements SingleEntity<T> {
     }
 
     @Override
-    public String toString() {
-        return this.key + " = " + value;
+    public T getValue() {
+        return value;
     }
 
     @Override
-    public T getValue() {
-        return value;
+    public String toString() {
+        return this.key + " = " + value;
     }
 }

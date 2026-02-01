@@ -5,6 +5,8 @@
 
 package ws.spring.beans;
 
+import org.jspecify.annotations.Nullable;
+
 /**
  * @author WindShadow
  * @version 2023-07-21
@@ -12,21 +14,23 @@ package ws.spring.beans;
 
 public class DefaultSingleBean<T> implements SingleBean<T> {
 
+    @Nullable
     private T value;
 
     public DefaultSingleBean() {
     }
 
-    public DefaultSingleBean(T value) {
+    public DefaultSingleBean(@Nullable T value) {
         this.value = value;
     }
 
+    @Nullable
     @Override
     public T getValue() {
         return value;
     }
 
-    public void setValue(T value) {
+    public void setValue(@Nullable T value) {
         this.value = value;
     }
 

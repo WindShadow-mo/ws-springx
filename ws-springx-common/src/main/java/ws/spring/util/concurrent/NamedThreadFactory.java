@@ -24,8 +24,7 @@ public final class NamedThreadFactory implements ThreadFactory {
 
         Assert.hasText(name, "The name of ThreadFactory must not be empty/null");
         this.name = name;
-        SecurityManager sm = System.getSecurityManager();
-        this.group = (sm != null) ? sm.getThreadGroup() : Thread.currentThread().getThreadGroup();
+        this.group = Thread.currentThread().getThreadGroup();
     }
 
     public String getName() {

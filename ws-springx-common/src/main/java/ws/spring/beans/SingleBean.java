@@ -5,6 +5,8 @@
 
 package ws.spring.beans;
 
+import org.jspecify.annotations.Nullable;
+
 /**
  * @author WindShadow
  * @version 2023-07-20
@@ -12,5 +14,6 @@ package ws.spring.beans;
 
 public interface SingleBean<T> {
 
+    @Nullable
     T getValue();
 }

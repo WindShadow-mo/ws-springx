@@ -7,7 +7,6 @@ package ws.spring.aop.support;
 
 import org.jspecify.annotations.Nullable;
 import org.springframework.core.Ordered;
-import org.springframework.util.Assert;
 import ws.spring.aop.MethodPeeper;
 import ws.spring.aop.ReturnValuePeeper;
 import ws.spring.aop.annotation.ExposurePoint;
@@ -38,8 +37,9 @@ public class MethodPeeperComposite<T> implements MethodPeeper<T> {
     public MethodPeeperComposite<T> addMethodPeepers(@Nullable MethodPeeper<T>... methodPeepers) {
 
         if (methodPeepers != null) {
-
-            return addMethodPeepers(Arrays.asList(methodPeepers));
+            for (MethodPeeper<T> methodPeeper : methodPeepers) {
+                addMethodPeeper(methodPeeper);
+            }
         }
         return this;
     }
@@ -89,7 +89,7 @@ public class MethodPeeperComposite<T> implements MethodPeeper<T> {
                 .stream()
                 .map(methodPeeper -> methodPeeper.peekArguments(exposurePoint, clazz, method, args))
                 .filter(Objects::nonNull)
-                .collect(Collectors.toList());
+                .toList();
 
         return (returnValue, ex) -> returnValuePeepers.forEach(returnValuePeeper -> returnValuePeeper.peekReturnValue(returnValue, ex));
     }
@@ -97,26 +97,15 @@ public class MethodPeeperComposite<T> implements MethodPeeper<T> {
     protected static class OrderedMethodPeeper<T> implements MethodPeeper<T>, Ordered {
 
         private int order = Ordered.LOWEST_PRECEDENCE;
-        private MethodPeeper<T> delegate;
-
-        public OrderedMethodPeeper() {
-        }
+        private final MethodPeeper<T> delegate;
 
         public OrderedMethodPeeper(MethodPeeper<T> delegate) {
-            this.delegate = delegate;
+            this.delegate = Objects.requireNonNull(delegate);
         }
 
         public OrderedMethodPeeper(int order, MethodPeeper<T> delegate) {
             this.order = order;
-            this.delegate = delegate;
-        }
-
-        public MethodPeeper<T> getDelegate() {
-            return delegate;
-        }
-
-        public void setDelegate(MethodPeeper<T> delegate) {
-            this.delegate = delegate;
+            this.delegate = Objects.requireNonNull(delegate);
         }
 
         @Override
@@ -131,7 +120,6 @@ public class MethodPeeperComposite<T> implements MethodPeeper<T> {
         @Override
         public ReturnValuePeeper<T> peekArguments(ExposurePoint exposurePoint, Class<?> clazz, Method method, Object... args) {
 
-            Assert.state(delegate != null, "The delegate must not be null");
             return delegate.peekArguments(exposurePoint, clazz, method, args);
         }
     }

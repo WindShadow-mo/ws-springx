@@ -5,16 +5,18 @@
 
 package ws.spring.web.entity;
 
+import org.jspecify.annotations.Nullable;
 import tools.jackson.databind.annotation.JsonDeserialize;
 import ws.spring.beans.SingleBean;
+
+import java.util.Map;
 
 /**
  * @author WindShadow
  * @version 2025-05-30
  */
-
-@JsonDeserialize(as = JacksonSingleEntity.class)
-public interface SingleEntity<E> extends SingleBean<E> {
+@JsonDeserialize(using = SingleEntityDeserializer.class)
+public sealed interface SingleEntity<E> extends SingleBean<E> permits JacksonSingleEntity{
 
     String getKey();
 
@@ -28,12 +30,14 @@ public interface SingleEntity<E> extends SingleBean<E> {
      * @param value new value
      * @return old value
      */
-    E replaceValue(E value);
+    @Nullable
+    E replaceValue(@Nullable E value);
+
+    default Map<String,@Nullable E> toMap() {
+        return Map.of(getKey(), getValue());
+    }
 
     static <T> SingleEntity<T> of(String key, T value) {
-
-        JacksonSingleEntity<T> entity = new JacksonSingleEntity<>();
-        entity.putJsonValue(key, value);
-        return entity;
+        return new JacksonSingleEntity<>(key, value);
     }
 }
