@@ -11,6 +11,7 @@ import ws.spring.aop.MethodPeeper;
 import ws.spring.aop.ReturnValuePeeper;
 
 import java.util.concurrent.Executor;
+import java.util.function.Supplier;
 
 /**
  * @author WindShadow
@@ -19,7 +20,7 @@ import java.util.concurrent.Executor;
 
 public abstract class AsyncMethodPeeper<T> extends AbstractMethodPeeper<T> {
 
-    private Executor executor;
+    private Supplier<Executor> executor;
 
     public AsyncMethodPeeper() {
     }
@@ -28,20 +29,20 @@ public abstract class AsyncMethodPeeper<T> extends AbstractMethodPeeper<T> {
         super(globalMethodPeekHandler);
     }
 
-    public AsyncMethodPeeper(Executor executor) {
+    public AsyncMethodPeeper(Supplier<Executor> executor) {
         this.executor = executor;
     }
 
-    public AsyncMethodPeeper(GlobalMethodPeekHandler globalMethodPeekHandler, Executor executor) {
+    public AsyncMethodPeeper(GlobalMethodPeekHandler globalMethodPeekHandler, Supplier<Executor> executor) {
         super(globalMethodPeekHandler);
         this.executor = executor;
     }
 
-    public Executor getExecutor() {
-        return executor;
+    public void setExecutor(Executor executor) {
+        this.executor = () -> executor;
     }
 
-    public void setExecutor(Executor executor) {
+    public void setExecutor(Supplier<Executor> executor) {
         this.executor = executor;
     }
 
@@ -62,6 +63,6 @@ public abstract class AsyncMethodPeeper<T> extends AbstractMethodPeeper<T> {
     protected ReturnValuePeeper<T> getAsyncMethodReturnValuePeeper(@Nullable ReturnValuePeeper<T> returnValuePeeper) {
 
         return returnValuePeeper == null ?
-                null : (returnValue, ex) -> this.executor.execute(() -> returnValuePeeper.peekReturnValue(returnValue, ex));
+                null : (returnValue, ex) -> this.executor.get().execute(() -> returnValuePeeper.peekReturnValue(returnValue, ex));
     }
 }

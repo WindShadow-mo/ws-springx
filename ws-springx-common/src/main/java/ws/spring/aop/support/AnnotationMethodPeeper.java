@@ -28,6 +28,7 @@ import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executor;
+import java.util.function.Supplier;
 
 /**
  * @author WindShadow
@@ -46,11 +47,11 @@ public class AnnotationMethodPeeper<T> extends AsyncMethodPeeper<T> implements B
         super(globalMethodPeekHandler);
     }
 
-    public AnnotationMethodPeeper(Executor executor) {
+    public AnnotationMethodPeeper(Supplier<Executor> executor) {
         super(executor);
     }
 
-    public AnnotationMethodPeeper(GlobalMethodPeekHandler globalMethodPeekHandler, Executor executor) {
+    public AnnotationMethodPeeper(GlobalMethodPeekHandler globalMethodPeekHandler, Supplier<Executor> executor) {
         super(globalMethodPeekHandler, executor);
     }
 

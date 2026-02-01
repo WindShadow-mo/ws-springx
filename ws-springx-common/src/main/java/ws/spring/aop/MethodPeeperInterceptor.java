@@ -12,6 +12,7 @@ import org.springframework.util.Assert;
 import ws.spring.aop.annotation.ExposurePoint;
 
 import java.lang.reflect.Method;
+import java.util.function.Supplier;
 
 /**
  * @author WindShadow
@@ -20,9 +21,9 @@ import java.lang.reflect.Method;
 
 public class MethodPeeperInterceptor implements MethodInterceptor {
 
-    private final MethodPeeper<?> methodPeeper;
+    private final Supplier<MethodPeeper<?>> methodPeeper;
 
-    public MethodPeeperInterceptor(MethodPeeper<?> methodPeeper) {
+    public MethodPeeperInterceptor(Supplier<MethodPeeper<?>> methodPeeper) {
 
         Assert.notNull(methodPeeper, "The MethodArgumentsPeeper must not be null");
         this.methodPeeper = methodPeeper;
@@ -38,7 +39,7 @@ public class MethodPeeperInterceptor implements MethodInterceptor {
 
             Class<?> targetClass = invocation.getThis().getClass();
             Object[] arguments = invocation.getArguments();
-            ReturnValuePeeper returnValueProcessor = methodPeeper.peekArguments(exposurePoint, targetClass, method, arguments);
+            ReturnValuePeeper returnValueProcessor = methodPeeper.get().peekArguments(exposurePoint, targetClass, method, arguments);
             Object returnValue = null;
             Exception ex = null;
             try {

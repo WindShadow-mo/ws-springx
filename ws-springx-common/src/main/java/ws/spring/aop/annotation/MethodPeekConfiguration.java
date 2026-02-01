@@ -5,7 +5,7 @@
 
 package ws.spring.aop.annotation;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
@@ -38,16 +38,16 @@ class MethodPeekConfiguration {
     @Bean
     @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
     @ConditionalOnMissingBean(MethodPeeper.class)
-    public static AnnotationMethodPeeper<?> annotationMethodPeeper(@Autowired GlobalMethodPeekHandler globalMethodPeekHandler, @Autowired TaskExecutor taskExecutor) {
+    public static AnnotationMethodPeeper<?> annotationMethodPeeper(GlobalMethodPeekHandler globalMethodPeekHandler, ObjectProvider<TaskExecutor> taskExecutor) {
 
-        return new AnnotationMethodPeeper<>(globalMethodPeekHandler, taskExecutor);
+        return new AnnotationMethodPeeper<>(globalMethodPeekHandler, taskExecutor::getObject);
     }
 
     @Bean
     @ConditionalOnMissingBean
-    public static MethodPeeperPostProcessor methodPeeperPostProcessor(@Autowired MethodPeeper<?> methodPeeper, @Autowired Environment environment) {
+    public static MethodPeeperPostProcessor methodPeeperPostProcessor(ObjectProvider<MethodPeeper<?>> methodPeeper, Environment environment) {
 
-        MethodPeeperPostProcessor methodPeeperPostProcessor = new MethodPeeperPostProcessor(methodPeeper);
+        MethodPeeperPostProcessor methodPeeperPostProcessor = new MethodPeeperPostProcessor(methodPeeper::getObject);
         boolean proxyTargetClass = environment.getProperty("spring.aop.proxy-target-class", Boolean.class, true);
         methodPeeperPostProcessor.setProxyTargetClass(proxyTargetClass);
         return methodPeeperPostProcessor;

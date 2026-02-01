@@ -13,6 +13,8 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.util.Assert;
 import ws.spring.aop.annotation.ExposurePoint;
 
+import java.util.function.Supplier;
+
 /**
  * @author WindShadow
  * @version 2022-01-21
@@ -20,9 +22,9 @@ import ws.spring.aop.annotation.ExposurePoint;
 
 public class MethodPeeperPostProcessor extends AbstractBeanFactoryAwareAdvisingPostProcessor implements InitializingBean {
 
-    private final MethodPeeper<?> methodPeeper;
+    private final Supplier<MethodPeeper<?>> methodPeeper;
 
-    public MethodPeeperPostProcessor(MethodPeeper<?> methodPeeper) {
+    public MethodPeeperPostProcessor(Supplier<MethodPeeper<?>> methodPeeper) {
 
         Assert.notNull(methodPeeper, "The MethodAdvisor must not be null");
         this.methodPeeper = methodPeeper;

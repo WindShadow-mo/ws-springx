@@ -24,6 +24,7 @@ import ws.spring.restrict.support.DelegateFrequencyRestrictor;
 import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Supplier;
 
 /**
  * @author WindShadow
@@ -32,13 +33,13 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class MethodFrequencyRestrictorInterceptor implements MethodInterceptor {
 
-    private final FrequencyRestrictRegistrar registrar;
+    private final Supplier<FrequencyRestrictRegistrar> registrar;
     private final BeanResolver beanResolver;
     private final ParameterNameDiscoverer parameterNameDiscoverer;
     private final ExpressionParser parser;
     private final Map<Method, FrequencyRestrictorHolder> restrictorHolders = new ConcurrentHashMap<>(16);
 
-    public MethodFrequencyRestrictorInterceptor(FrequencyRestrictRegistrar registrar, BeanFactory beanFactory, ParameterNameDiscoverer parameterNameDiscoverer, ExpressionParser parser) {
+    public MethodFrequencyRestrictorInterceptor(Supplier<FrequencyRestrictRegistrar> registrar, BeanFactory beanFactory, ParameterNameDiscoverer parameterNameDiscoverer, ExpressionParser parser) {
         this.registrar = registrar;
         this.beanResolver = new BeanFactoryResolver(beanFactory);
         this.parameterNameDiscoverer = parameterNameDiscoverer;
@@ -89,7 +90,7 @@ public class MethodFrequencyRestrictorInterceptor implements MethodInterceptor {
             }
             definition.setFrequency(attributes.getNumber("frequency"));
             definition.setDuration(attributes.getNumber("duration"));
-            FrequencyRestrictor restrictor = registrar.registerRestrictor(definition);
+            FrequencyRestrictor restrictor = registrar.get().registerRestrictor(definition);
 
             String refer = attributes.getString("refer");
             Expression referExp = null;

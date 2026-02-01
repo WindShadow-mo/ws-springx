@@ -15,6 +15,8 @@ import org.springframework.core.DefaultParameterNameDiscoverer;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 import ws.spring.restrict.annotation.FrequencyRestrict;
 
+import java.util.function.Supplier;
+
 /**
  * @author WindShadow
  * @version 2024-01-26
@@ -22,10 +24,10 @@ import ws.spring.restrict.annotation.FrequencyRestrict;
 
 public class MethodRestrictorPostProcessor extends AbstractBeanFactoryAwareAdvisingPostProcessor implements InitializingBean {
 
-    private final FrequencyRestrictRegistrar registrar;
+    private final Supplier<FrequencyRestrictRegistrar> registrar;
     private final BeanFactory beanFactory;
 
-    public MethodRestrictorPostProcessor(FrequencyRestrictRegistrar registrar, BeanFactory beanFactory) {
+    public MethodRestrictorPostProcessor(Supplier<FrequencyRestrictRegistrar> registrar, BeanFactory beanFactory) {
         this.registrar = registrar;
         this.beanFactory = beanFactory;
     }

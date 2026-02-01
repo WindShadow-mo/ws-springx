@@ -6,6 +6,7 @@
 package ws.spring.restrict.annotation;
 
 import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
@@ -31,9 +32,9 @@ class MethodRestrictorConfiguration {
     }
 
     @Bean
-    public static MethodRestrictorPostProcessor methodRestrictorPostProcessor(FrequencyRestrictRegistrar registrar, BeanFactory beanFactory, Environment environment) {
+    public static MethodRestrictorPostProcessor methodRestrictorPostProcessor(ObjectProvider<FrequencyRestrictRegistrar> registrar, BeanFactory beanFactory, Environment environment) {
 
-        MethodRestrictorPostProcessor processor = new MethodRestrictorPostProcessor(registrar, beanFactory);
+        MethodRestrictorPostProcessor processor = new MethodRestrictorPostProcessor(registrar::getObject, beanFactory);
         boolean proxyTargetClass = environment.getProperty("spring.aop.proxy-target-class", Boolean.class, true);
         processor.setProxyTargetClass(proxyTargetClass);
         return processor;
