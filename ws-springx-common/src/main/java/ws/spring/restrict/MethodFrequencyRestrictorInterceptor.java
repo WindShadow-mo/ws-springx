@@ -63,7 +63,7 @@ public class MethodFrequencyRestrictorInterceptor implements MethodInterceptor {
                 } else {
                     refer = holder.getDefaultRefer();
                 }
-                if (holder.tryRestrict(refer)) {
+                if (refer != null && holder.tryRestrict(refer)) {
 
                     String message = holder.isDynamicRefer() ?
                             String.format("The refer[%s] accesses too frequently and access is denied", refer) : "Access is too frequent, access is denied";

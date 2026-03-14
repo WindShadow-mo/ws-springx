@@ -40,7 +40,7 @@ public class AnnotationMethodPeeperTests {
         globalMethodPeekHandler = Mockito.spy(GlobalMethodPeekHandler.class);
         executor = Mockito.spy(Executor.class);
         methodPeeper = new AnnotationMethodPeeper<>();
-        methodPeeper.setGlobalLogAdvice(globalMethodPeekHandler);
+        methodPeeper.setGlobalMethodPeekHandler(globalMethodPeekHandler);
         methodPeeper.setExecutor(executor);
     }
 

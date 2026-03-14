@@ -37,7 +37,10 @@ public class MethodPeeperInterceptor implements MethodInterceptor {
         ExposurePoint exposurePoint = AnnotationUtils.findAnnotation(method, ExposurePoint.class);
         if (exposurePoint != null) {
 
-            Class<?> targetClass = invocation.getThis().getClass();
+            Object thisObj = invocation.getThis();
+            Assert.notNull(thisObj, "Target object must not be null.This is also a static proxy call, but this is not supported.");
+
+            Class<?> targetClass = thisObj.getClass();
             Object[] arguments = invocation.getArguments();
             ReturnValuePeeper returnValueProcessor = methodPeeper.get().peekArguments(exposurePoint, targetClass, method, arguments);
             Object returnValue = null;

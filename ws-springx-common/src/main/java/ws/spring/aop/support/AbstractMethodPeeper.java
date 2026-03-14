@@ -33,11 +33,11 @@ public abstract class AbstractMethodPeeper<T> implements MethodPeeper<T>, Initia
         this.globalMethodPeekHandler = globalMethodPeekHandler;
     }
 
-    public GlobalMethodPeekHandler getGlobalLogAdvice() {
+    public GlobalMethodPeekHandler getGlobalMethodPeekHandler() {
         return globalMethodPeekHandler;
     }
 
-    public void setGlobalLogAdvice(GlobalMethodPeekHandler globalMethodPeekHandler) {
+    public void setGlobalMethodPeekHandler(GlobalMethodPeekHandler globalMethodPeekHandler) {
         this.globalMethodPeekHandler = globalMethodPeekHandler;
     }
 

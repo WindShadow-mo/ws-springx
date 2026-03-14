@@ -75,12 +75,14 @@ public class SecurityUtils {
     }
 
     public static PublicKey readPublicKey(Resource resource, char @Nullable [] password) throws IOException {
-        return readPublicKey(resource.getInputStream(), password);
+        try (InputStream in = resource.getInputStream()) {
+            return readPublicKey(in, password);
+        }
     }
 
     public static PublicKey readPublicKey(InputStream in, char @Nullable [] password) throws IOException {
 
-        // 通常此处不会抛出IllegalArgumentException异常
+        // 通常此处不会抛出 IllegalArgumentException 异常
         return Optional.of(readKeyPair(in, password))
                 .map(KeyPair::getPublic)
                 .orElseThrow(() -> new IllegalArgumentException("Not found a PublicKey"));
@@ -95,12 +97,15 @@ public class SecurityUtils {
     }
 
     public static PrivateKey readPrivateKey(Resource resource, char @Nullable [] password) throws IOException {
-        return readPrivateKey(resource.getInputStream(), password);
+
+        try (InputStream in = resource.getInputStream()) {
+            return readPrivateKey(in, password);
+        }
     }
 
     public static PrivateKey readPrivateKey(InputStream in, char @Nullable [] password) throws IOException {
 
-        // 通常此处不会抛出IllegalArgumentException异常
+        // 通常此处不会抛出 IllegalArgumentException 异常
         return Optional.of(readKeyPair(in, password))
                 .map(KeyPair::getPrivate)
                 .orElseThrow(() -> new IllegalArgumentException("Not found a PrivateKey"));
@@ -117,7 +122,9 @@ public class SecurityUtils {
 
     public static KeyPair readKeyPair(Resource resource, char @Nullable [] password) throws IOException {
 
-        return readKeyPair(resource.getInputStream(), password);
+        try (InputStream in = resource.getInputStream()) {
+            return readKeyPair(in, password);
+        }
     }
 
     public static KeyPair readKeyPair(InputStream in, char @Nullable [] password) throws IOException {
@@ -130,7 +137,8 @@ public class SecurityUtils {
     private static PEMKeyPair parsePEMKeyPair(InputStream in, char @Nullable [] password) throws IOException {
 
         PEMKeyPair pemKeyPair;
-        try (PEMParser pemParser = new PEMParser(new InputStreamReader(in))) {
+        try (InputStreamReader reader = new InputStreamReader(in, StandardCharsets.UTF_8);
+             PEMParser pemParser = new PEMParser(reader)) {
 
             Object pem = pemParser.readObject();
             if (pem instanceof PEMKeyPair) {

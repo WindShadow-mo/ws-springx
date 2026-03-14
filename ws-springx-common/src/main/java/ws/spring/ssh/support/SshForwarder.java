@@ -57,7 +57,7 @@ public class SshForwarder {
                 tracker.close();
             } catch (Exception e) {
                 log.error(String.format("Error while closing tracker[%s:%d -> %s:%d]",
-                        tracker.getLocalHost(), tracker.getLocalPort(), tracker.getRemoteHost(), tracker.getRemotePort()));
+                        tracker.getLocalHost(), tracker.getLocalPort(), tracker.getRemoteHost(), tracker.getRemotePort()), e);
             } finally {
                 iterator.remove();
             }

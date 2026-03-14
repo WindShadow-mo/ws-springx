@@ -28,11 +28,7 @@ public abstract class AbstractSshOperator implements SshOperator {
         Objects.requireNonNull(command);
         Objects.requireNonNull(out);
         checkSshState();
-        try {
-            doExec(command, out);
-        } catch (Exception e) {
-            throw new IllegalStateException(e);
-        }
+        doExec(command, out);
     }
 
     @Override

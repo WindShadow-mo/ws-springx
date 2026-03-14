@@ -15,29 +15,38 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 /**
+ * 临时文件资源，支持自动清理临时文件
+ *
  * @author WindShadow
  * @version 2026-02-01
  */
-
 public class TemporaryFileResource extends FileSystemResource {
 
     private static final Cleaner CLEANER = Cleaner.create();
 
+    /**
+     * 内部清理器，用于在对象被垃圾回收时删除临时文件
+     */
     private record InnerCleaner(Path file) implements Runnable {
 
         @Override
         public void run() {
-
-            if (file == null) return;
-            try {
-                Files.deleteIfExists(file);
-            } catch (IOException e) {
-                throw new IllegalStateException("Error while deleting temporary file: " + file, e);
+            if (file != null) {
+                try {
+                    Files.deleteIfExists(file);
+                } catch (IOException e) {
+                    // 静默处理异常，避免在清理操作中抛出异常
+                    // Cleaner 中的异常会被忽略，难以诊断问题
+                }
             }
         }
     }
 
-    private final Cleaner.Cleanable cleanable = CLEANER.register(this, new InnerCleaner(this.getFilePath()));
+    private final Cleaner.Cleanable cleanable;
+
+    {
+        cleanable = CLEANER.register(this, new InnerCleaner(getFilePath()));
+    }
 
     public TemporaryFileResource(String path) {
         super(path);
@@ -55,6 +64,9 @@ public class TemporaryFileResource extends FileSystemResource {
         super(fileSystem, path);
     }
 
+    /**
+     * 手动释放临时文件资源
+     */
     public void release() {
         cleanable.clean();
     }

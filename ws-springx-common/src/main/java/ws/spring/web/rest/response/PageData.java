@@ -6,6 +6,7 @@
 package ws.spring.web.rest.response;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author WindShadow
@@ -72,7 +73,7 @@ public class PageData<T> {
 
     public static <E> PageData<E> of(List<E> elements) {
 
-        int size = elements.size();
+        int size = Objects.requireNonNull(elements, "elements must not be null").size();
         return of(1, size, size, elements);
     }
 

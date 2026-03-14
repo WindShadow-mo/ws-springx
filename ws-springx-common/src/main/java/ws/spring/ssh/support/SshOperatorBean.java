@@ -58,10 +58,25 @@ public class SshOperatorBean extends DelegateSshOperator {
 
     private void closeAllPortForwardingChannel() throws Exception {
 
+        Exception ex = null;
         for (PortForwardingTracker holder : channelHolders) {
+
             if (!holder.isClosed()) {
-                holder.close();
+                try {
+                    holder.close();
+                } catch (Exception e) {
+
+                    if (ex == null) {
+                        ex = e;
+                    } else {
+                        ex.addSuppressed(e);
+                    }
+                }
             }
+        }
+
+        if (ex != null) {
+            throw ex;
         }
     }
 }

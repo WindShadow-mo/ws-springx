@@ -5,8 +5,8 @@
 
 package ws.spring.ssh.autoconfigure;
 
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import org.hibernate.validator.constraints.Range;
 import ws.spring.ssh.AbstractSshSource;
 import ws.spring.ssh.SshSource;
 import ws.spring.ssh.support.SshForwardDeclaration;
@@ -22,7 +22,8 @@ abstract class SshSourceProperties {
 
     @NotBlank
     private String host;
-    @Min(0)
+
+    @Range(min = 1, max = 65535)
     private int port;
 
     @NotBlank

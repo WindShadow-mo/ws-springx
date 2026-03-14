@@ -227,8 +227,8 @@ public abstract class AbstractRestProxy implements RestProxy {
             URL url;
             try {
                 url = URI.create(origin).toURL();
-            } catch (MalformedURLException e) {
-                throw new IllegalArgumentException(String.format("[%s] is not a valid origin", origin));
+            } catch (MalformedURLException | IllegalArgumentException e) {
+                throw new IllegalArgumentException(String.format("[%s] is not a valid origin", origin), e);
             }
             String scheme = url.getProtocol();
             String host = url.getHost();
@@ -266,6 +266,9 @@ public abstract class AbstractRestProxy implements RestProxy {
         try {
             return doProxy(buildRequestEntity(), type);
         } finally {
+            // 请求执行后标记为已发送，确保代理对象不可重复使用
+            // 注意：即使请求失败，代理状态也会变为"已发送"，这是设计预期。
+            // 若需重试，请创建新的代理实例。
             this.send = true;
         }
     }
@@ -294,6 +297,11 @@ public abstract class AbstractRestProxy implements RestProxy {
         return new RequestEntity<>(body, headers, method, builder.build().toUri());
     }
 
+    /**
+     * 检查代理状态，确保未发送。
+     * <p>
+     * 在"已发送"状态下调用配置方法将抛出异常，这是设计预期行为。
+     */
     private void checkState() {
         Assert.state(!isSend(), "The proxy is sent");
     }

@@ -9,6 +9,7 @@ import org.jspecify.annotations.Nullable;
 import tools.jackson.databind.annotation.JsonDeserialize;
 import ws.spring.beans.SingleBean;
 
+import java.util.Collections;
 import java.util.Map;
 
 /**
@@ -34,7 +35,7 @@ public sealed interface SingleEntity<E> extends SingleBean<E> permits JacksonSin
     E replaceValue(@Nullable E value);
 
     default Map<String,@Nullable E> toMap() {
-        return Map.of(getKey(), getValue());
+        return Collections.singletonMap(getKey(), getValue());
     }
 
     static <T> SingleEntity<T> of(String key, T value) {

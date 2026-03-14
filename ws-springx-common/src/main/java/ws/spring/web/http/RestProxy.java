@@ -18,6 +18,20 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * REST 代理接口，用于构建和执行 HTTP 请求。
+ * <p>
+ * <strong>设计说明：</strong>
+ * <p>
+ * 本接口采用"一次性发送"设计，即代理对象在调用任意 {@code proxy()} 方法后会被标记为"已发送"状态。
+ * 这是为了确保请求的不可变性，防止意外重复使用已配置的代理对象。
+ * <p>
+ * <strong>重要注意事项：</strong>
+ * <ul>
+ *   <li>调用任意 {@code proxy()} 方法后（无论请求成功或失败），{@link #isSend()} 将返回 {@code true}</li>
+ *   <li>在"已发送"状态下调用任何配置方法（如 {@code addHeader}、{@code replaceQueryParam} 等）将抛出 {@link IllegalStateException}</li>
+ *   <li>若需重试请求，请创建新的代理实例</li>
+ * </ul>
+ *
  * @author WindShadow
  * @version 2025-07-14
  */

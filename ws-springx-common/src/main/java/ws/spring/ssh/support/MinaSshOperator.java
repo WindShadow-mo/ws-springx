@@ -56,7 +56,7 @@ class MinaSshOperator extends AbstractSshOperator {
             channel.setOut(new NoCloseOutputStream(out));
             channel.setRedirectErrorStream(true);
             channel.open().verify(channelTimeout);
-            channel.waitFor(EnumSet.of(ClientChannelEvent.CLOSED), 0);
+            channel.waitFor(EnumSet.of(ClientChannelEvent.CLOSED), channelTimeout);
         } catch (IOException e) {
             throw new SshIOException(source, "Open exec channel failed", e);
         }
@@ -70,7 +70,7 @@ class MinaSshOperator extends AbstractSshOperator {
             channel.setOut(new NoCloseOutputStream(out));
             channel.setRedirectErrorStream(true);
             channel.open().verify(channelTimeout);
-            channel.waitFor(EnumSet.of(ClientChannelEvent.CLOSED), 0);
+            channel.waitFor(EnumSet.of(ClientChannelEvent.CLOSED), channelTimeout);
         } catch (IOException e) {
             throw new SshIOException(source, "Open shell channel failed", e);
         }
@@ -84,7 +84,7 @@ class MinaSshOperator extends AbstractSshOperator {
             channel.open().verify(channelTimeout);
             inputConsumer.accept(channel.getInvertedIn());
             outputConsumer.accept(channel.getInvertedOut());
-            channel.waitFor(EnumSet.of(ClientChannelEvent.CLOSED), 0);
+            channel.waitFor(EnumSet.of(ClientChannelEvent.CLOSED), channelTimeout);
         } catch (IOException e) {
             throw new SshIOException(source, "Open shell channel failed", e);
         }
@@ -98,7 +98,7 @@ class MinaSshOperator extends AbstractSshOperator {
             channel.setRedirectErrorStream(true);
             channel.open().verify(channelTimeout);
             outputConsumer.accept(channel.getInvertedOut());
-            channel.waitFor(EnumSet.of(ClientChannelEvent.CLOSED), 0);
+            channel.waitFor(EnumSet.of(ClientChannelEvent.CLOSED), channelTimeout);
         } catch (IOException e) {
             throw new SshIOException(source, "Open shell channel failed", e);
         }
@@ -112,7 +112,7 @@ class MinaSshOperator extends AbstractSshOperator {
             channel.setRedirectErrorStream(true);
             channel.open().verify(channelTimeout);
             inputConsumer.accept(channel.getInvertedIn());
-            channel.waitFor(EnumSet.of(ClientChannelEvent.CLOSED), 0);
+            channel.waitFor(EnumSet.of(ClientChannelEvent.CLOSED), channelTimeout);
         } catch (IOException e) {
             throw new SshIOException(source, "Open shell channel failed", e);
         }
