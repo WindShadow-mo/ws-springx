@@ -74,6 +74,11 @@
             <artifactId>mybatis-spring</artifactId>
             <optional>true</optional>
         </dependency>
+        <dependency>
+            <groupId>com.mybatis-flex</groupId>
+            <artifactId>mybatis-flex-core</artifactId>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
 
     <build>
