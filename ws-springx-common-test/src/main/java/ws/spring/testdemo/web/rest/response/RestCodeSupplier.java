@@ -3,7 +3,7 @@
  * Copyright (c) 2025 莫千风
  */
 
-package ws.spring.web.rest.response;
+package ws.spring.testdemo.web.rest.response;
 
 import org.jspecify.annotations.NonNull;
 

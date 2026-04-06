@@ -8,7 +8,7 @@ package ws.spring.testdemo.web.controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ws.spring.testdemo.web.rest.GlobalRest;
-import ws.spring.web.rest.response.RestResponse;
+import ws.spring.testdemo.web.rest.response.RestResponse;
 
 /**
  * @author WindShadow

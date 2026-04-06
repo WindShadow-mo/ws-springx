@@ -6,8 +6,8 @@
 package ws.spring.testdemo.web.rest;
 
 import org.jspecify.annotations.Nullable;
-import ws.spring.web.rest.response.RestCodeSupplier;
-import ws.spring.web.rest.response.RestResponse;
+import ws.spring.testdemo.web.rest.response.RestCodeSupplier;
+import ws.spring.testdemo.web.rest.response.RestResponse;
 
 /**
  * @author WindShadow

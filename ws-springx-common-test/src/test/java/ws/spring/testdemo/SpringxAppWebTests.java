@@ -21,7 +21,7 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 import tools.jackson.core.type.TypeReference;
 import ws.spring.testdemo.util.JacksonUtils;
 import ws.spring.testdemo.web.rest.GlobalRest;
-import ws.spring.web.rest.response.RestResponse;
+import ws.spring.testdemo.web.rest.response.RestResponse;
 
 import java.nio.charset.StandardCharsets;
 

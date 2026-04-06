@@ -16,7 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import ws.spring.testdemo.assistant.TestHook;
 import ws.spring.testdemo.web.rest.GlobalRest;
 import ws.spring.web.http.RestProxy;
-import ws.spring.web.rest.response.RestResponse;
+import ws.spring.testdemo.web.rest.response.RestResponse;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

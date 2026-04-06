@@ -13,7 +13,7 @@ import ws.spring.testdemo.pojo.City;
 import ws.spring.testdemo.pojo.User;
 import ws.spring.testdemo.web.rest.GlobalRest;
 import ws.spring.web.bind.annotation.FormModel;
-import ws.spring.web.rest.response.RestResponse;
+import ws.spring.testdemo.web.rest.response.RestResponse;
 
 import java.util.Optional;
 
