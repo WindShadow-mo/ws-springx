@@ -19,19 +19,20 @@ import static java.lang.annotation.ElementType.*;
 
 /**
  * 限制枚举范围的约束注解，使用方式如下（以Spring环境示例）：
- * <pre class="code">
+ * <pre>{@snippet :
  * public enum MyEnum {
  *     // 金木水火土
  *     JIN,MU,SHUI,HUO,TU
  * }
- * &#064;Validated
- * &#064;Service
+ *
+ * @Validated
+ * @Service
  * public class CustomService {
- *     public void aMethod(&#064;EnumRange(enumType = MyEnum.class, enums = {"JIN","MU","SHUI"}) MyEnum param)
+ *     public void aMethod(@EnumRange(enumType = MyEnum.class, enums = {"JIN","MU","SHUI"}) MyEnum param)
  *          // ...
  *     }
  * }
- * </pre>
+ * }</pre>
  * 当枚举参数<code>param</code>不为"JIN","MU","SHUI"之一时，则校验不通过，反之通过
  * <p>当{@link EnumRange}修饰的参数类型和{@link EnumRange#enumType()}不一致时，将在校验时抛出{@linkplain ConstraintDeclarationException 约束声明异常}，开发者应该避免约束声明错误
  *

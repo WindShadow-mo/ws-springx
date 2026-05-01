@@ -18,15 +18,15 @@ import static java.lang.annotation.ElementType.*;
 
 /**
  * 字符串元素范围约束注解，使用方式如下（以Spring环境示例）：
- * <pre class="code">
- * &#064;Validated
- * &#064;Service
+ * <pre>{@snippet :
+ * @Validated
+ * @Service
  * public class CustomService {
- *     public void aMethod(&#064;StringRange({"aaa","bbb"}) String str)
+ *     public void aMethod(@StringRange({"aaa","bbb"}) String str)
  *          // ...
  *     }
  * }
- * </pre>
+ * }</pre>
  * 当参数<code>str</code>不为"aaa","bbb"之一时，则校验不通过，反之通过
  *
  * @author WindShadow

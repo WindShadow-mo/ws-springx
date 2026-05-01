@@ -35,11 +35,12 @@ import java.lang.annotation.*;
  *  </table>
  *  你可以使用 FormModel 注解进行如下参数映射
  *
- *  <pre class="code">
- *  &#64;GetMapping("/from-model")
- *  public String formModel(&#64;FormModel("user") User u, &#64;FormModel("city") City c) {
+ *  <pre>{@snippet :
+ *  @GetMapping("/from-model")
+ *  public String formModel(@FormModel("user") User u, @FormModel("city") City c) {
  *      // ...
- *  }</pre>
+ *  }
+ * }</pre>
  * <p>
  * 实际 FormModel 是处理来自{@link jakarta.servlet.http.HttpServletRequest#getParameter(String)}的参数键值对，
  * 如上述示例代码，它会将从 Request 对象中获取 "user.name" 的参数值绑定到 User 对象的 name 属性
