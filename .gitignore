@@ -31,4 +31,6 @@ build/
 ### VS Code ###
 .vscode/
 
+.codegraph/
+openspec/
 work.txt

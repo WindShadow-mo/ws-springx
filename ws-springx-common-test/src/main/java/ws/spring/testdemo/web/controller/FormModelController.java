@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import ws.spring.testdemo.pojo.City;
 import ws.spring.testdemo.pojo.User;
 import ws.spring.testdemo.web.rest.GlobalRest;
-import ws.spring.web.bind.annotation.FormModel;
 import ws.spring.testdemo.web.rest.response.RestResponse;
+import ws.spring.web.bind.annotation.FormModel;
 
 import java.util.Optional;
 

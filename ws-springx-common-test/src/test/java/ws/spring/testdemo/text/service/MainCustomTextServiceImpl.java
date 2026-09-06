@@ -1,18 +1,8 @@
-/*
- * SPDX-License-Identifier: MIT
- * Copyright (c) 2025 莫千风
- */
-
-package ws.spring.testdemo.text;
+package ws.spring.testdemo.text.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import ws.spring.text.annotation.SqlEscape;
-
-/**
- * @author WindShadow
- * @version 2023-06-08
- */
 
 @Slf4j
 @Service

@@ -6,7 +6,7 @@
 package ws.spring.testdemo.mybatisflex.mapper;
 
 import ws.spring.mybatisflex.GenericBaseMapper;
-import ws.spring.testdemo.pojo.Employee;
+import ws.spring.testdemo.mybatisflex.pojo.Employee;
 
 /**
  * @author WindShadow

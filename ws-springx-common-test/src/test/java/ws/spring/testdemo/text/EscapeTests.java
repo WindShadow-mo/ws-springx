@@ -9,15 +9,25 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import ws.spring.testdemo.SpringxAppTests;
+import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
+import ws.spring.testdemo.text.service.MainCustomTextServiceImpl;
 import ws.spring.text.SqlEscaper;
+import ws.spring.text.annotation.EnableEscape;
 
 /**
  * @author WindShadow
  * @version 2023-06-07
  */
 @Slf4j
-public class EscapeTests extends SpringxAppTests {
+@SpringBootTest(classes = EscapeTests.Config.class, webEnvironment = SpringBootTest.WebEnvironment.NONE)
+public class EscapeTests {
+
+    @EnableEscape
+    @Import(MainCustomTextServiceImpl.class)
+    @SpringBootConfiguration
+    static class Config {}
 
     @Autowired
     private MainCustomTextServiceImpl customTextService;

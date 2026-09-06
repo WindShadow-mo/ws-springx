@@ -11,9 +11,15 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
+import org.springframework.boot.autoconfigure.task.TaskExecutionAutoConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.validation.autoconfigure.ValidationAutoConfiguration;
+import org.springframework.context.annotation.Import;
 import org.springframework.test.context.bean.override.mockito.MockitoSpyBean;
 import ws.spring.aop.ReturnValuePeeper;
-import ws.spring.testdemo.SpringxAppTests;
+import ws.spring.aop.annotation.EnableMethodPeek;
 import ws.spring.testdemo.service.NormalService;
 import ws.spring.testdemo.service.NormalServiceAdvice;
 
@@ -26,7 +32,17 @@ import java.util.function.Consumer;
  */
 
 @Slf4j
-public class NormalServiceTests extends SpringxAppTests {
+@SpringBootTest(classes = NormalServiceTests.Config.class, webEnvironment = SpringBootTest.WebEnvironment.NONE)
+public class NormalServiceTests {
+
+    @ImportAutoConfiguration({
+            TaskExecutionAutoConfiguration.class,
+            ValidationAutoConfiguration.class
+    })
+    @EnableMethodPeek
+    @Import({NormalService.class, NormalServiceAdvice.class})
+    @SpringBootConfiguration
+    static class Config {}
 
     @Autowired
     private NormalService normalService;

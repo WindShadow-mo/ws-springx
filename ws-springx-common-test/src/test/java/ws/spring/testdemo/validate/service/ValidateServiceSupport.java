@@ -3,7 +3,7 @@
  * Copyright (c) 2025 莫千风
  */
 
-package ws.spring.testdemo.validate;
+package ws.spring.testdemo.validate.service;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
@@ -11,7 +11,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.multipart.MultipartFile;
 import ws.spring.beans.SingleBean;
@@ -30,7 +30,7 @@ import java.util.Map;
 
 @Slf4j
 @Validated
-@Service
+@Component
 public class ValidateServiceSupport {
 
     // ~ EnumRange

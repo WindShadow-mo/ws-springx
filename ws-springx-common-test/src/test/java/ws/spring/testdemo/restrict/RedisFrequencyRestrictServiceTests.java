@@ -6,11 +6,14 @@
 package ws.spring.testdemo.restrict;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
+import org.springframework.boot.data.redis.autoconfigure.DataRedisAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
 import ws.spring.restrict.FrequencyRestrictService;
 import ws.spring.restrict.support.RedisFrequencyRestrictService;
-import ws.spring.testdemo.SpringxApp;
 import ws.spring.testdemo.anno.EnableEmbeddedRedis;
 
 /**
@@ -18,9 +21,17 @@ import ws.spring.testdemo.anno.EnableEmbeddedRedis;
  * @version 2024-10-17
  */
 @ActiveProfiles("redis")
-@EnableEmbeddedRedis
-@SpringBootTest(classes = SpringxApp.class, properties = {"app.frequency-restrictor=redis"})
+@SpringBootTest(
+        classes = RedisFrequencyRestrictServiceTests.Config.class,
+        properties = {"app.frequency-restrictor=redis"},
+        webEnvironment = SpringBootTest.WebEnvironment.NONE)
 public class RedisFrequencyRestrictServiceTests extends FrequencyRestrictServiceTests {
+
+    @EnableEmbeddedRedis
+    @Import(FrequencyRestrictConfig.class)
+    @ImportAutoConfiguration(DataRedisAutoConfiguration.class)
+    @SpringBootConfiguration
+    static class Config {}
 
     @Autowired
     private RedisFrequencyRestrictService restrictService;

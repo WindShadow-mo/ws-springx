@@ -5,7 +5,7 @@
 
 package ws.spring.aop.annotation;
 
-import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
+import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;
 
@@ -16,7 +16,7 @@ import java.lang.annotation.*;
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@ImportAutoConfiguration(MethodPeekConfiguration.class)
+@Import(MethodPeekConfiguration.class)
 public @interface EnableMethodPeek {
 
 }

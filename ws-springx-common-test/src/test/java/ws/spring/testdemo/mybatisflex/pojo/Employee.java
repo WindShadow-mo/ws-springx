@@ -3,7 +3,7 @@
  * Copyright (c) 2025 莫千风
  */
 
-package ws.spring.testdemo.pojo;
+package ws.spring.testdemo.mybatisflex.pojo;
 
 import com.mybatisflex.annotation.Table;
 import lombok.Data;

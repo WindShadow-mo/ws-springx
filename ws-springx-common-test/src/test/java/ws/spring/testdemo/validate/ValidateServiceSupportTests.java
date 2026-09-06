@@ -11,11 +11,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockMultipartFile;
-import ws.spring.testdemo.SpringxAppTests;
 import ws.spring.testdemo.validate.enums.Direction;
+import ws.spring.testdemo.validate.service.ValidateServiceSupport;
 
 import java.lang.annotation.ElementType;
 import java.util.Locale;
@@ -28,7 +32,13 @@ import java.util.UUID;
  */
 
 @Slf4j
-public class ValidateServiceSupportTests extends SpringxAppTests {
+@SpringBootTest(classes = ValidateServiceSupportTests.Config.class, webEnvironment = SpringBootTest.WebEnvironment.NONE)
+public class ValidateServiceSupportTests {
+
+    @Configuration(proxyBeanMethods = false)
+    @EnableAutoConfiguration
+    @Import(ValidateServiceSupport.class)
+    static class Config {}
 
     @Autowired
     private ValidateServiceSupport service;
