@@ -3,7 +3,7 @@
  * Copyright (c) 2025 莫千风
  */
 
-package ws.spring.testdemo.config;
+package ws.spring.testdemo.context.example;
 
 import ws.spring.context.annotation.ExactConfiguration;
 

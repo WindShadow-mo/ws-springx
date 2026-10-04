@@ -3,7 +3,7 @@
  * Copyright (c) 2025 莫千风
  */
 
-package ws.spring.testdemo.config;
+package ws.spring.testdemo.restrict;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
@@ -18,7 +18,7 @@ import ws.spring.restrict.support.RedisFrequencyRestrictService;
  */
 @ConditionalOnProperty(prefix = "app", name = "frequency-restrictor", havingValue = "redis")
 @Configuration(proxyBeanMethods = false)
-public class FrequencyRestrictConfig {
+class FrequencyRestrictConfig {
 
     @Bean
     public static FrequencyRestrictService frequencyRestrictService(RedisOperations<String, String> redisOperations) {

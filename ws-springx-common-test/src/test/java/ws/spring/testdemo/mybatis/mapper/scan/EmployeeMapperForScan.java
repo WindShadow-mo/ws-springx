@@ -3,7 +3,7 @@
  * Copyright (c) 2025 莫千风
  */
 
-package ws.spring.testdemo.mybatis.mapper;
+package ws.spring.testdemo.mybatis.mapper.scan;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;

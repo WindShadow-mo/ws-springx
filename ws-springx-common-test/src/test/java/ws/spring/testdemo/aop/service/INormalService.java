@@ -3,7 +3,7 @@
  * Copyright (c) 2025 莫千风
  */
 
-package ws.spring.testdemo.service;
+package ws.spring.testdemo.aop.service;
 
 import ws.spring.aop.annotation.ExposurePoint;
 

@@ -6,6 +6,7 @@
 package ws.spring.testdemo.anno;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -22,6 +23,7 @@ import java.io.IOException;
  * @version 2024-10-23
  */
 @TestConfiguration(proxyBeanMethods = false)
+@ConditionalOnProperty("spring.data.redis.port")
 @ConditionalOnMissingBean({RedisServerFactory.class, RedisServerBean.class})
 @YamlSource("classpath:redis/redis-server-config.yml")
 @EnableConfigurationProperties(RedisServerProperties.class)

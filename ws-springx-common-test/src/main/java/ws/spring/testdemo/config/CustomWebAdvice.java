@@ -25,7 +25,6 @@ import ws.spring.testdemo.web.rest.GlobalRest;
 @RestControllerAdvice(annotations = RestController.class)
 public class CustomWebAdvice extends ResponseEntityExceptionHandler {
 
-
     @Override
     protected @Nullable ResponseEntity<Object> handleExceptionInternal(Exception ex, @Nullable Object body, HttpHeaders headers, HttpStatusCode statusCode, WebRequest request) {
 

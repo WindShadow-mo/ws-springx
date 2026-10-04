@@ -3,10 +3,9 @@
  * Copyright (c) 2025 莫千风
  */
 
-package ws.spring.testdemo.service;
+package ws.spring.testdemo.aop.service;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
 import ws.spring.aop.annotation.ExposurePoint;
 
 
@@ -16,7 +15,6 @@ import ws.spring.aop.annotation.ExposurePoint;
  */
 
 @Slf4j
-@Service
 public class NormalService implements INormalService {
 
     @ExposurePoint

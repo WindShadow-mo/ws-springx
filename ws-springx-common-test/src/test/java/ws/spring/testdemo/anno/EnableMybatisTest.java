@@ -1,4 +1,4 @@
-package ws.spring.text.annotation;
+package ws.spring.testdemo.anno;
 
 import org.springframework.context.annotation.Import;
 
@@ -6,12 +6,11 @@ import java.lang.annotation.*;
 
 /**
  * @author WindShadow
- * @version 2023-06-07.
+ * @version 2026-09-06
  */
-
-@Target({ElementType.TYPE})
+@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Import(EscapeConfiguration.class)
-public @interface EnableEscape {
+@Import(MybatisTestConfiguration.class)
+public @interface EnableMybatisTest {
 }

@@ -3,7 +3,7 @@
  * Copyright (c) 2025 莫千风
  */
 
-package ws.spring.testdemo.service;
+package ws.spring.testdemo.restrict.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

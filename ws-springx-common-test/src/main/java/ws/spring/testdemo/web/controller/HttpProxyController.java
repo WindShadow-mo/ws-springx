@@ -6,7 +6,7 @@
 package ws.spring.testdemo.web.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.*;
@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import ws.spring.testdemo.assistant.TestHook;
 import ws.spring.testdemo.web.rest.GlobalRest;
-import ws.spring.web.http.RestProxy;
 import ws.spring.testdemo.web.rest.response.RestResponse;
+import ws.spring.web.http.RestProxy;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -25,7 +25,7 @@ import java.nio.charset.StandardCharsets;
  * @author WindShadow
  * @version 2025-07-17
  */
-
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/bind/extend/http-proxy")
 public class HttpProxyController {
@@ -35,8 +35,7 @@ public class HttpProxyController {
     public static final String PROXY_ORIGIN_DOWNLOAD = "X-Proxy-Download";
     public static final String REAL_DATA = "X-Real-Data";
 
-    @Autowired
-    private TestHook hook;
+    private final TestHook hook;
 
     @RequestMapping("/facade")
     public ResponseEntity<?> facade(@RequestHeader(value = HOOK_KEY, required = false) String hookKey,

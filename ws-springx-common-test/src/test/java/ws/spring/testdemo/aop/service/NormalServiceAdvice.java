@@ -3,11 +3,10 @@
  * Copyright (c) 2025 莫千风
  */
 
-package ws.spring.testdemo.service;
+package ws.spring.testdemo.aop.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.annotation.Order;
-import org.springframework.stereotype.Component;
 import ws.spring.aop.ReturnValuePeeper;
 import ws.spring.aop.annotation.PeekPoint;
 import ws.spring.aop.annotation.Peeper;
@@ -21,7 +20,6 @@ import ws.spring.aop.annotation.Peeper;
 
 @Slf4j
 @Peeper(value = NormalService.class)
-@Component
 public class NormalServiceAdvice implements INormalServiceAdvice {
 
     @PeekPoint()

@@ -10,19 +10,26 @@ import org.apache.ibatis.exceptions.TooManyResultsException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import ws.spring.mybatis.mapper.ImportMapper;
-import ws.spring.testdemo.SpringxAppTests;
+import ws.spring.testdemo.anno.EnableMybatisFlexTest;
 import ws.spring.testdemo.mybatisflex.mapper.EmployeeBaseMapper;
-import ws.spring.testdemo.pojo.Employee;
+import ws.spring.testdemo.mybatisflex.pojo.Employee;
 
 /**
  * @author WindShadow
  * @version 2025-07-13.
  */
 @ActiveProfiles({"datasource", "mybatisflex"})
-@ImportMapper(mapper = EmployeeBaseMapper.class)
-public class GenericBaseMapperTests extends SpringxAppTests {
+@SpringBootTest(classes = GenericBaseMapperTests.Config.class, webEnvironment = SpringBootTest.WebEnvironment.NONE)
+public class GenericBaseMapperTests {
+
+    @ImportMapper(mapper = EmployeeBaseMapper.class)
+    @EnableMybatisFlexTest
+    @SpringBootConfiguration
+    static class Config {}
 
     @Autowired
     private EmployeeBaseMapper employeeMapper;

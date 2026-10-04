@@ -5,7 +5,7 @@
 
 package ws.spring.restrict.annotation;
 
-import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
+import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;
 
@@ -17,6 +17,6 @@ import java.lang.annotation.*;
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@ImportAutoConfiguration(MethodRestrictorConfiguration.class)
+@Import(MethodRestrictorConfiguration.class)
 public @interface EnableFrequencyRestrict {
 }

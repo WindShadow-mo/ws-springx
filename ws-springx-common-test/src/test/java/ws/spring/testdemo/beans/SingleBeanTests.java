@@ -6,15 +6,26 @@
 package ws.spring.testdemo.beans;
 
 import jakarta.validation.ConstraintViolationException;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.validation.autoconfigure.ValidationAutoConfiguration;
+import org.springframework.context.annotation.Import;
+import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 import ws.spring.beans.DefaultSingleBean;
 import ws.spring.beans.SingleBean;
-import ws.spring.testdemo.SpringxAppTests;
 import ws.spring.testdemo.pojo.Person;
 
+import java.util.Collection;
 import java.util.Collections;
 
 /**
@@ -22,7 +33,30 @@ import java.util.Collections;
  * @version 2024-10-21
  */
 @Slf4j
-public class SingleBeanTests extends SpringxAppTests {
+@SpringBootTest(classes = SingleBeanTests.Config.class, webEnvironment = SpringBootTest.WebEnvironment.NONE)
+public class SingleBeanTests {
+
+    @Import(SingleBeanService.class)
+    @ImportAutoConfiguration(ValidationAutoConfiguration.class)
+    @SpringBootConfiguration
+    static class Config {}
+
+    @Validated
+    @Service
+    static class SingleBeanService {
+
+        public void consumeStringSingleBean(SingleBean<@NotBlank String> bean) {
+        }
+
+        public void consumeIntegerSingleBean(SingleBean<@Min(100) Integer> bean) {
+        }
+
+        public void consumeCollectionSingleBean(SingleBean<@NotEmpty Collection<Object>> bean) {
+        }
+
+        public void consumePojoSingleBean(SingleBean<@Valid Person> bean) {
+        }
+    }
 
     @Autowired
     private SingleBeanService sbs;

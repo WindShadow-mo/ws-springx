@@ -9,7 +9,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import tools.jackson.core.type.TypeReference;
-import ws.spring.testdemo.SpringxAppTests;
 import ws.spring.testdemo.pojo.City;
 import ws.spring.testdemo.util.JacksonUtils;
 import ws.spring.web.entity.SingleEntity;
@@ -26,7 +25,7 @@ import java.util.function.Supplier;
  * @see SingleEntity
  */
 @Slf4j
-public class SimpleEntityTests extends SpringxAppTests {
+public class SimpleEntityTests {
 
     private final Random random = new Random();
 

@@ -27,7 +27,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 
 @Slf4j
-public abstract class FrequencyRestrictServiceTests {
+abstract class FrequencyRestrictServiceTests {
 
     private final AtomicInteger number = new AtomicInteger(0);
     protected final Random random = new Random();
